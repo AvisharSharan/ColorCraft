@@ -1,0 +1,66 @@
+.theme-preview {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text-block {
+  padding: 1rem;
+  border: 1px solid var(--text);
+  width: 60%;
+  border-radius: 10px;
+}
+
+.primary-btn, .secondary-btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  color: var(--text);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background-color: var(--primary);
+}
+
+.secondary-btn {
+  background-color: var(--secondary);
+}
+
+.card {
+  background-color: var(--secondary);
+  color: var(--text);
+  padding: 1rem;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.accent-badge {
+  background-color: var(--accent);
+  color: var(--text);
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.color-codes {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.swatch {
+  padding: 1rem;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  min-width: 150px;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
