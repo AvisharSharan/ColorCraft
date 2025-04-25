@@ -1,3 +1,26 @@
+/* Global reset & fallback */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --text: #333;
+  --primary: #6a5acd;
+  --secondary: #9370db;
+  --accent: #ff69b4;
+}
+
+/* Utility class for hover effects */
+.hover-effect {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Layout */
 .theme-preview {
   margin-top: 2rem;
   display: flex;
@@ -6,20 +29,59 @@
   gap: 1rem;
 }
 
-.text-block {
-  padding: 1rem;
-  border: 1px solid var(--text);
-  width: 60%;
-  border-radius: 10px;
+.preview-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.primary-btn, .secondary-btn {
-  padding: 0.5rem 1.5rem;
+.preview-left,
+.preview-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Typography */
+.typography-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: inherit;
+}
+
+.typography-section p,
+.typography-card p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.typography-card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+/* Buttons */
+.button-section,
+.button-card {
+  display: flex;
+  gap: 1rem;
+}
+
+button,
+.primary-btn,
+.secondary-btn {
+  padding: 0.8rem 1.5rem;
   font-size: 1rem;
   border: none;
-  color: var(--text);
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  color: var(--text);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .primary-btn {
@@ -30,14 +92,31 @@
   background-color: var(--secondary);
 }
 
-.card {
+/* Cards */
+.card,
+.preview-card {
   background-color: var(--secondary);
   color: var(--text);
   padding: 1rem;
-  width: 50%;
+  width: 100%;
+  max-width: 600px;
   border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.preview-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.preview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Accent Badge */
 .accent-badge {
   background-color: var(--accent);
   color: var(--text);
@@ -47,6 +126,7 @@
   font-weight: bold;
 }
 
+/* Color Swatches */
 .color-codes {
   margin-top: 2rem;
   display: flex;
@@ -55,86 +135,64 @@
   justify-content: center;
 }
 
-.swatch {
+.swatch,
+.color-swatch,
+.color-box,
+.gradient-card {
   padding: 1rem;
   border-radius: 8px;
   color: #fff;
   font-weight: bold;
-  min-width: 150px;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
-.preview-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  height: 100vh;
-  padding: 2rem;
-  gap: 2rem;
+.swatch {
+  min-width: 150px;
 }
 
-.preview-left {
-  flex: 1;
+.color-swatch,
+.color-box {
+  width: 100px;
+  height: 100px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
 }
 
-.typography-section h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: inherit;
-}
-
-.typography-section p {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-.button-section {
-  display: flex;
-  gap: 1rem;
-}
-
-.button-section button {
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.button-section button:hover {
+.color-swatch:hover,
+.color-box:hover,
+.gradient-card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+.color-showcase {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Gradient Cards */
 .preview-right {
-  flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
 }
 
 .gradient-card {
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 150px;
-  border-radius: 8px;
-  color: #fff;
-  font-weight: bold;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.gradient-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .gradient-name {
@@ -144,94 +202,11 @@
   max-width: 70%;
 }
 
-.preview-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.preview-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-.typography-card h2 {
-  margin: 0 0 1rem;
-  font-size: 1.8rem;
-}
-
-.typography-card p {
-  font-size: 1rem;
-  color: #555;
-}
-
-.button-card button {
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-right: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.button-card button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.swatch-card {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.color-swatch {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 0.9rem;
-  font-weight: bold;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.color-swatch:hover{
-  transform: scale(1.05);
-}
-
-.color-showcase {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 1rem;
+/* Responsive Text Block */
+.text-block {
   padding: 1rem;
-}
-
-.color-box {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  border-radius: 8px;
-  color: #fff;
-  font-weight: bold;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.color-box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--text);
+  width: 100%;
+  max-width: 700px;
+  border-radius: 10px;
 }
