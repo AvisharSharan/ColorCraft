@@ -23,13 +23,13 @@ function ThemePreview({ palette }) {
 
         <div className="button-section">
           <button style={{ backgroundColor: palette.primary, color: palette.text }}>
-            Primary Action
+            Primary Button
           </button>
           <button style={{ backgroundColor: palette.secondary, color: palette.text }}>
-            Secondary Action
+            Secondary Button
           </button>
           <button style={{ backgroundColor: palette.accent, color: palette.text }}>
-            Accent Action
+            Accent Button
           </button>
         </div>
       </div>
