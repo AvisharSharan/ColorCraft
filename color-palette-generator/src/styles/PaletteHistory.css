@@ -1,3 +1,4 @@
+/* General Palette History Styles */
 .palette-history {
   display: flex;
   flex-wrap: wrap;
@@ -5,6 +6,7 @@
   margin-top: 2rem;
 }
 
+/* Palette Item Styles */
 .palette-item {
   display: flex;
   flex-direction: column;
@@ -22,6 +24,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Color Swatch Styles */
 .palette-item .color-swatch {
   width: 50px;
   height: 50px;
