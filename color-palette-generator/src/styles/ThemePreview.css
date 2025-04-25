@@ -214,3 +214,40 @@ button,
   max-width: 700px;
   border-radius: 10px;
 }
+
+/* Palette Container */
+.palette-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.color-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 12px;
+  color: #000;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  height: 150px; /* Increased size */
+  font-size: 1.2rem; /* Adjusted font size for better visibility */
+}
+
+.color-hex {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5rem 0 0;
+}
+
+.color-name {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}

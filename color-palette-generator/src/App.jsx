@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import ThemePreview from "./components/ThemePreview";
+import chroma from "chroma-js";
 import Toolbar from "./components/Toolbar";
 import "./styles/App.css";
-import chroma from "chroma-js";
 
 function App() {
   const [palette, setPalette] = useState({
@@ -13,49 +12,61 @@ function App() {
     accent: "#8bc34a"
   });
 
-  const [paletteHistory, setPaletteHistory] = useState([]);
-
   useEffect(() => {
+    document.documentElement.style.setProperty("--text", palette.text);
     document.documentElement.style.setProperty("--background", palette.background);
-  }, [palette.background]);
+    document.documentElement.style.setProperty("--primary", palette.primary);
+    document.documentElement.style.setProperty("--secondary", palette.secondary);
+    document.documentElement.style.setProperty("--accent", palette.accent);
+  }, [palette]);
 
   return (
-    <div className="app">
-      <Toolbar 
-        palette={palette} 
-        setPalette={(newPalette) => {
-          setPalette(newPalette);
-        }} 
-        generatePalette={() => {
-          const base = chroma.random().saturate(2).brighten(1);
-          const baseHue = base.get('hsl.h');
-          const baseSat = base.get('hsl.s');
-          const baseLum = base.get('hsl.l');
+    <div className="app-container">
+      <div className="left-section" style={{ backgroundColor: palette.background }}>
+        <div className="typography-preview">
+          <h1 style={{ color: palette.primary }}>Typography Preview</h1>
+          <p style={{ color: palette.text }}>
+            This is a paragraph example with clean and modern styling. Check out the 
+            <a href="#" style={{ color: palette.accent }}>accent color</a>.
+          </p>
+        </div>
+        <div className="button-preview">
+          <button style={{ backgroundColor: palette.primary, color: palette.text }} className="primary-btn">Primary Button</button>
+          <button style={{ backgroundColor: palette.secondary, color: palette.text }} className="secondary-btn">Secondary Button</button>
+        </div>
+      </div>
+      <div className="right-section">
+        <div className="palette-container">
+          {Object.entries(palette).map(([key, color]) => (
+            <div
+              key={key}
+              className="color-block"
+              style={{ backgroundColor: color }}
+              onClick={() => navigator.clipboard.writeText(color)}
+            >
+              <p className="color-hex">{color}</p>
+            </div>
+          ))}
+        </div>
+        <Toolbar 
+          onGenerate={() => {
+            const base = chroma.random();
+            const baseHue = base.get('hsl.h');
+            const baseSat = base.get('hsl.s');
+            const baseLum = base.get('hsl.l');
 
-          const background = base.set('hsl.s', 0.5).brighten(1.5).hex();
+            const newPalette = {
+              text: base.darken(3).hex(),
+              background: base.brighten(3).hex(),
+              primary: base.hex(),
+              secondary: chroma.hsl((baseHue + 30) % 360, baseSat, baseLum).hex(),
+              accent: chroma.hsl((baseHue + 60) % 360, baseSat, baseLum).hex()
+            };
 
-          const primary = base.hex();
-          const text = chroma(primary).darken(5).hex();
-          const secondary = chroma.hsl(baseHue + 20, baseSat * 0.9, baseLum).hex();
-
-          const accent = chroma.hsl(baseHue + 40, Math.min(baseSat + 0.2, 1), baseLum).hex();
-
-          const newPalette = {
-            text,
-            background,
-            primary,
-            secondary,
-            accent
-          };
-
-          setPalette(newPalette);
-        }}
-      />
-      <main className="workspace">
-        <section className="preview-area">
-          <ThemePreview palette={palette} />
-        </section>
-      </main>
+            setPalette(newPalette);
+          }}
+        />
+      </div>
     </div>
   );
 }

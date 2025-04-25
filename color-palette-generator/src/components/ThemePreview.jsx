@@ -1,38 +1,25 @@
-import { useState } from "react";
+import React from "react";
 import "../styles/ThemePreview.css";
 
 function ThemePreview({ palette }) {
-  const [copiedColor, setCopiedColor] = useState(null);
-
-  const handleCopy = (color) => {
-    navigator.clipboard.writeText(color);
-    setCopiedColor(color);
-    setTimeout(() => setCopiedColor(null), 2000); // Reset after 2 seconds
-  };
+  const colors = [
+    { hex: palette.background },
+    { hex: palette.primary },
+    { hex: palette.secondary },
+    { hex: palette.accent },
+  ];
 
   return (
-    <div className="preview-container">
-      <div className="preview-left">
-        <div className="typography-section">
-          <h1>
-            <span style={{ color: palette.text }}>Welcome to </span>
-            <span style={{ color: palette.primary }}>ColorCraft</span>
-          </h1>
-          <p style={{ color: palette.text }}>Your ultimate tool for creating stunning color palettes.</p>
+    <div className="palette-container">
+      {colors.map((color, index) => (
+        <div
+          key={index}
+          className="color-block"
+          style={{ backgroundColor: color.hex }}
+        >
+          <p className="color-hex">{color.hex}</p>
         </div>
-
-        <div className="button-section">
-          <button style={{ backgroundColor: palette.primary, color: palette.text }}>
-            Primary Button
-          </button>
-          <button style={{ backgroundColor: palette.secondary, color: palette.text }}>
-            Secondary Button
-          </button>
-          <button style={{ backgroundColor: palette.accent, color: palette.text }}>
-            Accent Button
-          </button>
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
