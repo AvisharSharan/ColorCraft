@@ -190,6 +190,7 @@ button,
 }
 
 .gradient-card {
+  background: #ccc;
   height: 150px;
   display: flex;
   flex-direction: column;
@@ -197,11 +198,12 @@ button,
   align-items: center;
 }
 
+.gradient-card:hover {
+  background: #bbb;
+}
+
 .gradient-name {
-  font-size: 1rem;
-  margin-top: 1rem;
-  text-align: center;
-  max-width: 70%;
+  display: none;
 }
 
 /* Responsive Text Block */

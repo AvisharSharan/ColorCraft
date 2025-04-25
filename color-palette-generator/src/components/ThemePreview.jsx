@@ -33,24 +33,6 @@ function ThemePreview({ palette }) {
           </button>
         </div>
       </div>
-
-      <div className="preview-right">
-        {[
-          { name: "Primary-Secondary", colors: [palette.primary, palette.secondary] },
-          { name: "Primary-Accent", colors: [palette.primary, palette.accent] },
-          { name: "Secondary-Background", colors: [palette.secondary, palette.background] },
-        ].map((gradient, index) => (
-          <div
-            key={index}
-            className="gradient-card"
-            style={{
-              background: `linear-gradient(135deg, ${gradient.colors[0]}, ${gradient.colors[1]})`,
-            }}
-          >
-            <span className="gradient-name">{gradient.name}</span>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }

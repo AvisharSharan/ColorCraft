@@ -47,9 +47,7 @@ function App() {
           const secondary = chroma.hsl(baseHue + 20, baseSat * 0.9, baseLum).hex();
 
           // Adjust accent color logic
-          const accent = Math.random() > 0.5
-            ? chroma.hsl(baseHue + 40, Math.min(baseSat + 0.2, 1), baseLum).hex() // Same category
-            : chroma.hsl((baseHue + 180) % 360, Math.min(baseSat + 0.3, 1), baseLum).hex(); // Complementary
+          const accent = chroma.hsl(baseHue + 40, Math.min(baseSat + 0.2, 1), baseLum).hex();
 
           const newPalette = {
             text,

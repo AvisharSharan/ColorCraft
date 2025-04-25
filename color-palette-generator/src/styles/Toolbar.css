@@ -45,7 +45,7 @@
 /* Generate Button Styles */
 .generate-btn {
   padding: 0.8rem 1.5rem;
-  background: linear-gradient(135deg, #4caf50, #81c784);
+  background: #4caf50;
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
