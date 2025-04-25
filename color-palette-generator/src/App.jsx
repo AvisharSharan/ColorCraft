@@ -26,13 +26,31 @@ function App() {
         <div className="typography-preview">
           <h1 style={{ color: palette.primary }}>Typography Preview</h1>
           <p style={{ color: palette.text }}>
-            This is a paragraph example with clean and modern styling. Check out the 
-            <a href="#" style={{ color: palette.accent }}>accent color</a>.
+            This is a paragraph example with clean and modern styling. Check out the
+            <span style={{ marginLeft: "0.5rem" }}>
+              <a href="#" style={{ color: palette.accent }}>accent color</a>
+            </span>.
           </p>
         </div>
         <div className="button-preview">
-          <button style={{ backgroundColor: palette.primary, color: palette.text }} className="primary-btn">Primary Button</button>
-          <button style={{ backgroundColor: palette.secondary, color: palette.text }} className="secondary-btn">Secondary Button</button>
+          <button 
+            style={{ 
+              backgroundColor: palette.primary, 
+              color: chroma.contrast(palette.primary, '#ffffff') > 4.5 ? '#ffffff' : '#000000' 
+            }} 
+            className="primary-btn"
+          >
+            Primary Button
+          </button>
+          <button 
+            style={{ 
+              backgroundColor: palette.secondary, 
+              color: chroma.contrast(palette.secondary, '#ffffff') > 4.5 ? '#ffffff' : '#000000' 
+            }} 
+            className="secondary-btn"
+          >
+            Secondary Button
+          </button>
         </div>
       </div>
       <div className="right-section">
@@ -42,7 +60,6 @@ function App() {
               key={key}
               className="color-block"
               style={{ backgroundColor: color }}
-              onClick={() => navigator.clipboard.writeText(color)}
             >
               <p className="color-hex">{color}</p>
             </div>
@@ -65,6 +82,7 @@ function App() {
 
             setPalette(newPalette);
           }}
+          palette={palette} // Pass the palette prop
         />
       </div>
     </div>
