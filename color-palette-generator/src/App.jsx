@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ThemePreview from "./components/ThemePreview";
 import PaletteGenerator from "./components/PaletteGenerator";
 import Toolbar from "./components/Toolbar";
@@ -20,6 +20,10 @@ function App() {
     setPaletteHistory((prevHistory) => [newPalette, ...prevHistory.slice(0, 9)]); // Keep only the last 10 palettes
   };
 
+  useEffect(() => {
+    document.documentElement.style.setProperty("--background", palette.background);
+  }, [palette.background]);
+
   return (
     <div className="app">
       <Toolbar 
@@ -34,10 +38,8 @@ function App() {
           const baseSat = base.get('hsl.s');
           const baseLum = base.get('hsl.l');
 
-          // Adjusted background logic to alternate between slightly light and normal darkness
-          const background = Math.random() > 0.5
-            ? base.set('hsl.s', 0.4).brighten(0.5).hex() // Slightly light
-            : base.set('hsl.s', 0.3).darken(0.5).hex(); // Normal darkness
+          // Adjusted background logic to make the color lighter
+          const background = base.set('hsl.s', 0.5).brighten(1.5).hex();
 
           // Set text color to a very dark version of the primary color
           const primary = base.hex();

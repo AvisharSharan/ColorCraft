@@ -29,7 +29,9 @@
   gap: 1rem;
 }
 
+/* Apply the background color from the palette to the preview container */
 .preview-container {
+  background-color: var(--background);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
