@@ -10,66 +10,6 @@ body {
   color: var(--text);
 }
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f4f4f9, #e0e0e0);
-  font-family: Arial, sans-serif;
-}
-
-.app-header {
-  text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #4caf50, #81c784);
-  color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.app-header h1 {
-  font-size: 2.5rem;
-  margin: 0;
-}
-
-.app-header p {
-  font-size: 1.2rem;
-  margin: 0.5rem 0 0;
-}
-
-.app-main {
-  display: flex;
-  flex: 1;
-  padding: 2rem;
-  gap: 2rem;
-}
-
-.left-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.right-column {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.app-footer {
-  text-align: center;
-  padding: 1rem;
-  background: linear-gradient(135deg, #81c784, #4caf50);
-  color: white;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.app-footer p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
 .app {
   display: flex;
   flex-direction: column;
@@ -173,6 +113,31 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.app-header {
+  text-align: center;
+  padding: 2rem;
+  background: transparent;
+  color: #fff;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.app-header p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  flex: 1;
+}
+
 .palette-section, .preview-section, .history-section {
   background: #fff;
   padding: 1.5rem;
@@ -184,6 +149,14 @@ body {
   margin-top: 0;
   font-size: 1.5rem;
   color: #4caf50;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  background: #333;
+  color: #fff;
+  font-size: 0.9rem;
 }
 
 .accent-box p {

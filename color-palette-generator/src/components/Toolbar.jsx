@@ -1,22 +1,28 @@
-import React from 'react';
-import '../styles/Toolbar.css';
+import React from "react";
+import "../styles/Toolbar.css";
 
-const Toolbar = ({ onColorChange, onGenerate }) => {
+function Toolbar({ palette, setPalette, generatePalette }) {
+  const handleColorChange = (key, value) => {
+    setPalette({ ...palette, [key]: value });
+  };
+
   return (
     <div className="toolbar">
-      <div className="toolbar-item">
-        <label htmlFor="colorPicker">Pick a color:</label>
-        <input
-          type="color"
-          id="colorPicker"
-          onChange={(e) => onColorChange(e.target.value)}
-        />
-      </div>
-      <button className="generate-btn" onClick={onGenerate}>
-        Generate Palette
+      {Object.entries(palette).map(([key, value]) => (
+        <div key={key} className="toolbar-item">
+          <label>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+          <input
+            type="color"
+            value={value}
+            onChange={(e) => handleColorChange(key, e.target.value)}
+          />
+        </div>
+      ))}
+      <button className="generate-btn" onClick={generatePalette}>
+        Generate
       </button>
     </div>
   );
-};
+}
 
 export default Toolbar;
