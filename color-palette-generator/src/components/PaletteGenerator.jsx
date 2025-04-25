@@ -1,5 +1,4 @@
 import chroma from "chroma-js";
-import "../styles/PaletteGenerator.css";
 
 function PaletteGenerator({ palette, setPalette }) {
   const generatePalette = () => {
@@ -25,18 +24,7 @@ function PaletteGenerator({ palette, setPalette }) {
     });
   };
 
-  return (
-    <div className="toolbar">
-      {Object.entries(palette).map(([key, value]) => (
-        <div key={key} className="toolbar-swatch" style={{ backgroundColor: value }}>
-          <span style={{ color: key === "text" ? "#000000" : "#ffffff" }}>{key}</span>
-        </div>
-      ))}
-      <button className="generate-btn" onClick={generatePalette}>
-        🎲 Generate
-      </button>
-    </div>
-  );
+  return null;
 }
 
 export default PaletteGenerator;
