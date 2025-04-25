@@ -22,11 +22,6 @@ function App() {
 
   return (
     <div className="app">
-      <header className="app-header minimal-header">
-        <h1>ColorCraft</h1>
-        <hr />
-      </header>
-
       <Toolbar 
         palette={palette} 
         setPalette={(newPalette) => {

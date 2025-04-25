@@ -14,7 +14,10 @@ function ThemePreview({ palette }) {
     <div className="preview-container">
       <div className="preview-left">
         <div className="typography-section">
-          <h1 style={{ color: palette.primary }}>Welcome to ColorCraft</h1>
+          <h1>
+            <span style={{ color: palette.text }}>Welcome to </span>
+            <span style={{ color: palette.primary }}>ColorCraft</span>
+          </h1>
           <p style={{ color: palette.text }}>Your ultimate tool for creating stunning color palettes.</p>
         </div>
 
