@@ -19,14 +19,11 @@ function App() {
     document.documentElement.style.setProperty("--secondary", palette.secondary);
     document.documentElement.style.setProperty("--accent", palette.accent);
 
+    // Dynamically set the body's background color as a gradient between primary and secondary colors
     document.body.style.background = `linear-gradient(45deg, ${palette.primary}, ${palette.secondary})`;
 
+    // Set the right section's background color to the palette's background color
     document.querySelector(".right-section").style.backgroundColor = palette.background;
-
-    const paletteContainer = document.querySelector(".palette-container");
-    if (paletteContainer) {
-      paletteContainer.style.outline = `2px solid ${palette.text}`;
-    }
   }, [palette]);
 
   return (
