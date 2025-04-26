@@ -18,6 +18,15 @@ function App() {
     document.documentElement.style.setProperty("--primary", palette.primary);
     document.documentElement.style.setProperty("--secondary", palette.secondary);
     document.documentElement.style.setProperty("--accent", palette.accent);
+
+    document.body.style.background = `linear-gradient(45deg, ${palette.primary}, ${palette.secondary})`;
+
+    document.querySelector(".right-section").style.backgroundColor = palette.background;
+
+    const paletteContainer = document.querySelector(".palette-container");
+    if (paletteContainer) {
+      paletteContainer.style.outline = `2px solid ${palette.text}`;
+    }
   }, [palette]);
 
   return (
@@ -82,7 +91,7 @@ function App() {
 
             setPalette(newPalette);
           }}
-          palette={palette} // Pass the palette prop
+          palette={palette}
         />
       </div>
     </div>
