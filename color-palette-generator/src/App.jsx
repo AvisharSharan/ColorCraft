@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import chroma from "chroma-js";
 import Toolbar from "./components/Toolbar";
 import ExportModal from "./components/ExportModal";
+import TypographyPreview from "./components/TypographyPreview";
+import ButtonPreview from "./components/ButtonPreview";
+import PaletteDisplay from "./components/PaletteDisplay";
+import FeaturesSection from "./components/FeaturesSection";
 import "./styles/App.css";
 
 function App() {
@@ -32,62 +36,18 @@ function App() {
   return (
     <div className="app-container">
       <div className="left-section" style={{ backgroundColor: palette.background }}>
-        <div className="typography-preview">
-          <h1 style={{ color: palette.primary }}>Typography Preview</h1>
-          <p style={{ color: palette.text }}>
-            This is a paragraph example with clean and modern styling. Check out the
-            <span style={{ marginLeft: "0.5rem" }}>
-              <a href="#" style={{ color: palette.accent }}>accent color</a>
-            </span>.
-          </p>
-        </div>
-        <div className="button-preview">
-          <button 
-            style={{ 
-              backgroundColor: palette.primary, 
-              color: chroma.contrast(palette.primary, '#ffffff') > 4.5 ? '#ffffff' : '#000000' 
-            }} 
-            className="primary-btn"
-          >
-            Primary Button
-          </button>
-          <button 
-            style={{ 
-              backgroundColor: palette.secondary, 
-              color: chroma.contrast(palette.secondary, '#ffffff') > 4.5 ? '#ffffff' : '#000000' 
-            }} 
-            className="secondary-btn"
-          >
-            Secondary Button
-          </button>
-        </div>
+        <TypographyPreview palette={palette} />
+        <ButtonPreview palette={palette} />
       </div>
       <div className="right-section">
-        <div className="palette-container">
-          {Object.entries(palette).map(([key, color]) => (
-            <div
-              key={key}
-              className="color-block"
-              style={{ backgroundColor: color }}
-            >
-              <p className="color-hex">{color}</p>
-            </div>
-          ))}
-        </div>
-        <div className="features-container" style={{ width: "50%", padding: "1rem" }}>
-          <button 
-            className="export-btn" 
-            onClick={() => setShowExportPopup(true)}
-          >Save
-            <span className="material-icons">save</span>
-          </button>
-          {showExportPopup && (
-            <ExportModal 
-              palette={palette} 
-              onClose={() => setShowExportPopup(false)} 
-            />
-          )}
-        </div>
+        <PaletteDisplay palette={palette} />
+        <FeaturesSection onExportClick={() => setShowExportPopup(true)} />
+        {showExportPopup && (
+          <ExportModal 
+            palette={palette} 
+            onClose={() => setShowExportPopup(false)} 
+          />
+        )}
         <Toolbar 
           onGenerate={() => {
             const base = chroma.random();
