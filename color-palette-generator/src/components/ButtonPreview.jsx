@@ -5,8 +5,9 @@ const ButtonPreview = ({ palette }) => (
   <div className="button-preview">
     <button 
       style={{ 
+        fontWeight: "bold",
         backgroundColor: palette.primary, 
-        color: chroma.contrast(palette.primary, '#ffffff') > 2.5 ? '#ffffff' : '#000000' 
+        color: chroma.contrast(palette.primary, '#ffffff') > 2.5 ? '#ffffff' : palette.text 
       }} 
       className="primary-btn"
     >
@@ -14,8 +15,9 @@ const ButtonPreview = ({ palette }) => (
     </button>
     <button 
       style={{ 
+        fontWeight: "bold",
         backgroundColor: palette.secondary, 
-        color: chroma.contrast(palette.secondary, '#ffffff') > 2.5 ? '#ffffff' : '#000000' 
+        color: chroma.contrast(palette.secondary, '#ffffff') > 2.5 ? '#ffffff' : palette.text  
       }} 
       className="secondary-btn"
     >
