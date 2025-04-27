@@ -12,6 +12,8 @@ function App() {
     accent: "#8bc34a"
   });
 
+  const [showExportPopup, setShowExportPopup] = useState(false);
+
   useEffect(() => {
     document.documentElement.style.setProperty("--text", palette.text);
     document.documentElement.style.setProperty("--background", palette.background);
@@ -70,6 +72,36 @@ function App() {
               <p className="color-hex">{color}</p>
             </div>
           ))}
+        </div>
+        <div className="features-container" style={{ width: "50%", padding: "1rem" }}>
+          <button 
+            className="export-btn" 
+            onClick={() => setShowExportPopup(true)}
+          >
+            Save/Export Palette
+          </button>
+          {showExportPopup && (
+            <div className="modal-overlay" onClick={() => setShowExportPopup(false)}>
+              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <h3>Export Palette</h3>
+                <textarea
+                  readOnly
+                  value={`:root {\n  --text: ${palette.text};\n  --background: ${palette.background};\n  --primary: ${palette.primary};\n  --secondary: ${palette.secondary};\n  --accent: ${palette.accent};\n}`}
+                  style={{ width: "100%", height: "100px" }}
+                />
+                <button 
+                  onClick={() => {
+                    navigator.clipboard.writeText(`:root {\n  --text: ${palette.text};\n  --background: ${palette.background};\n  --primary: ${palette.primary};\n  --secondary: ${palette.secondary};\n  --accent: ${palette.accent};\n}`);
+                    alert('Palette copied to clipboard!');
+                  }}
+                  style={{ marginRight: "1rem" }}
+                >
+                  Copy
+                </button>
+                <button onClick={() => setShowExportPopup(false)}>Close</button>
+              </div>
+            </div>
+          )}
         </div>
         <Toolbar 
           onGenerate={() => {
