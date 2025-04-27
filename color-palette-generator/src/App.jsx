@@ -28,10 +28,8 @@ function App() {
     document.documentElement.style.setProperty("--secondary", palette.secondary);
     document.documentElement.style.setProperty("--accent", palette.accent);
 
-    // Dynamically set the body's background color as a gradient between primary and secondary colors
     document.body.style.background = `linear-gradient(45deg, ${palette.primary}, ${palette.secondary})`;
 
-    // Set the right section's background color to the palette's background color
     document.querySelector(".right-section").style.backgroundColor = palette.background;
   }, [palette]);
 
@@ -42,7 +40,7 @@ function App() {
     const paletteText = `:root {\n  --text: ${palette.text};\n  --background: ${palette.background};\n  --primary: ${palette.primary};\n  --secondary: ${palette.secondary};\n  --accent: ${palette.accent};\n}`;
     zip.file("palette.txt", paletteText);
 
-    // Add a placeholder PNG file (replace with actual canvas rendering logic if needed)
+    // Add a placeholder PNG file
     const canvas = document.createElement("canvas");
     canvas.width = 500;
     canvas.height = 100;
@@ -71,6 +69,7 @@ function App() {
         <FeaturesSection 
           onExportClick={() => setShowExportPopup(true)} 
           onDownloadClick={handleDownload} 
+          palette={palette}
         />
         {showExportPopup && (
           <ExportModal 
