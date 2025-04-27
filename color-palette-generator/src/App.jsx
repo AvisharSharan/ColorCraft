@@ -78,8 +78,8 @@ function App() {
           <button 
             className="export-btn" 
             onClick={() => setShowExportPopup(true)}
-          >
-            Save/Export Palette
+          >Save
+            <span className="material-icons">save</span>
           </button>
           {showExportPopup && (
             <ExportModal 
