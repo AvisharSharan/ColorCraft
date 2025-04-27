@@ -7,7 +7,7 @@ const Toolbar = ({ onGenerate, palette }) => {
       <button 
         className="generate-btn"
         style={{ 
-          background: `linear-gradient(90deg, ${palette.primary}, ${palette.secondary})`, 
+          background: `linear-gradient(90deg, ${palette.secondary}, ${palette.primary})`, 
           color: palette.background 
         }}
         onClick={onGenerate}
