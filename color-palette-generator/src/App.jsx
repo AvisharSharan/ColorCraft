@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import chroma from "chroma-js";
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
 import Toolbar from "./components/Toolbar";
 import ExportModal from "./components/ExportModal";
 import TypographyPreview from "./components/TypographyPreview";
@@ -33,6 +35,31 @@ function App() {
     document.querySelector(".right-section").style.backgroundColor = palette.background;
   }, [palette]);
 
+  const handleDownload = async () => {
+    const zip = new JSZip();
+
+    // Add palette codes as a text file
+    const paletteText = `:root {\n  --text: ${palette.text};\n  --background: ${palette.background};\n  --primary: ${palette.primary};\n  --secondary: ${palette.secondary};\n  --accent: ${palette.accent};\n}`;
+    zip.file("palette.txt", paletteText);
+
+    // Add a placeholder PNG file (replace with actual canvas rendering logic if needed)
+    const canvas = document.createElement("canvas");
+    canvas.width = 500;
+    canvas.height = 100;
+    const ctx = canvas.getContext("2d");
+    const colors = Object.values(palette);
+    colors.forEach((color, index) => {
+      ctx.fillStyle = color;
+      ctx.fillRect(index * 100, 0, 100, 100);
+    });
+    const pngData = canvas.toDataURL("image/png").split(",")[1];
+    zip.file("palette.png", pngData, { base64: true });
+
+    // Generate the ZIP file and trigger download
+    const content = await zip.generateAsync({ type: "blob" });
+    saveAs(content, "palette.zip");
+  };
+
   return (
     <div className="app-container">
       <div className="left-section" style={{ backgroundColor: palette.background }}>
@@ -41,7 +68,10 @@ function App() {
       </div>
       <div className="right-section">
         <PaletteDisplay palette={palette} />
-        <FeaturesSection onExportClick={() => setShowExportPopup(true)} />
+        <FeaturesSection 
+          onExportClick={() => setShowExportPopup(true)} 
+          onDownloadClick={handleDownload} 
+        />
         {showExportPopup && (
           <ExportModal 
             palette={palette} 
