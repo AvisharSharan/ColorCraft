@@ -60,42 +60,50 @@ function App() {
 
   return (
     <div className="app-container">
-      <div className="left-section" style={{ backgroundColor: palette.background }}>
-        <TypographyPreview palette={palette} />
-        <ButtonPreview palette={palette} />
+      <div className="header">
+          <header>ColorCraft</header>
       </div>
-      <div className="right-section">
-        <PaletteDisplay palette={palette} />
-        <FeaturesSection 
-          onExportClick={() => setShowExportPopup(true)} 
-          onDownloadClick={handleDownload} 
-          palette={palette}
-        />
-        {showExportPopup && (
-          <ExportModal 
-            palette={palette} 
-            onClose={() => setShowExportPopup(false)} 
+      <div className="main-app">
+        <div className="left-section" style={{ backgroundColor: palette.background }}>
+          <TypographyPreview palette={palette} />
+          <ButtonPreview palette={palette} />
+        </div>
+        <div className="right-section">
+          <PaletteDisplay palette={palette} />
+          <FeaturesSection 
+            onExportClick={() => setShowExportPopup(true)} 
+            onDownloadClick={handleDownload} 
+            palette={palette}
           />
-        )}
-        <Toolbar 
-          onGenerate={() => {
-            const base = chroma.random();
-            const baseHue = base.get('hsl.h');
-            const baseSat = base.get('hsl.s');
-            const baseLum = base.get('hsl.l');
+          {showExportPopup && (
+            <ExportModal 
+              palette={palette} 
+              onClose={() => setShowExportPopup(false)} 
+            />
+          )}
+          <Toolbar 
+            onGenerate={() => {
+              const base = chroma.random();
+              const baseHue = base.get('hsl.h');
+              const baseSat = base.get('hsl.s');
+              const baseLum = base.get('hsl.l');
 
-            const newPalette = {
-              text: base.darken(3).hex(),
-              background: base.brighten(3).hex(),
-              primary: base.hex(),
-              secondary: chroma.hsl((baseHue + 30) % 360, baseSat, baseLum).hex(),
-              accent: chroma.hsl((baseHue + 60) % 360, baseSat, baseLum).hex()
-            };
+              const newPalette = {
+                text: base.darken(3).hex(),
+                background: base.brighten(3).hex(),
+                primary: base.hex(),
+                secondary: chroma.hsl((baseHue + 30) % 360, baseSat, baseLum).hex(),
+                accent: chroma.hsl((baseHue + 60) % 360, baseSat, baseLum).hex()
+              };
 
-            setPalette(newPalette);
-          }}
-          palette={palette}
-        />
+              setPalette(newPalette);
+            }}
+            palette={palette}
+          />
+        </div>
+      </div>
+      <div className="footer">
+        <footer>Made by Avishar</footer>
       </div>
     </div>
   );
