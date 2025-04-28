@@ -38,11 +38,9 @@ function App() {
   const handleDownload = async () => {
     const zip = new JSZip();
 
-    // Add palette codes as a text file
     const paletteText = `:root {\n  --text: ${palette.text};\n  --background: ${palette.background};\n  --primary: ${palette.primary};\n  --secondary: ${palette.secondary};\n  --accent: ${palette.accent};\n}`;
     zip.file("palette.txt", paletteText);
 
-    // Add a placeholder PNG file
     const canvas = document.createElement("canvas");
     canvas.width = 500;
     canvas.height = 100;
@@ -55,7 +53,6 @@ function App() {
     const pngData = canvas.toDataURL("image/png").split(",")[1];
     zip.file("palette.png", pngData, { base64: true });
 
-    // Generate the ZIP file and trigger download
     const content = await zip.generateAsync({ type: "blob" });
     saveAs(content, "palette.zip");
   };
@@ -104,7 +101,7 @@ function App() {
         </div>
       </div>
 
-      <Footer />
+      <Footer palette={palette} />
     </div>
   );
 }
