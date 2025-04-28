@@ -8,6 +8,8 @@ import TypographyPreview from "./components/TypographyPreview";
 import ButtonPreview from "./components/ButtonPreview";
 import PaletteDisplay from "./components/PaletteDisplay";
 import FeaturesSection from "./components/FeaturesSection";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import "./styles/App.css";
 
 function App() {
@@ -60,9 +62,8 @@ function App() {
 
   return (
     <div className="app-container">
-      <div className="header">
-          <header>ColorCraft</header>
-      </div>
+      <Header />
+
       <div className="main-app">
         <div className="left-section" style={{ backgroundColor: palette.background }}>
           <TypographyPreview palette={palette} />
@@ -102,9 +103,8 @@ function App() {
           />
         </div>
       </div>
-      <div className="footer">
-        <footer>Made by Avishar</footer>
-      </div>
+
+      <Footer />
     </div>
   );
 }
