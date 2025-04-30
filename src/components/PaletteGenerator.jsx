@@ -1,19 +1,7 @@
 import { useState } from "react";
 import chroma from "chroma-js";
 
-/**
- * Component responsible for generating color palettes based on different harmony models
- */
 const PaletteGenerator = () => {
-  // State is managed by parent component
-  
-  /**
-   * Generates a palette based on the selected harmony mode and base color
-   * @param {string} harmonyMode - The type of color harmony to use
-   * @param {string} baseColor - The base color to use (if useBaseColor is true)
-   * @param {boolean} useBaseColor - Whether to use the provided base color or generate a random one
-   * @returns {Object} The generated palette object
-   */
   const generatePalette = (harmonyMode, baseColor, useBaseColor) => {
     try {
       const base = useBaseColor ? chroma(baseColor) : chroma.random();
@@ -47,7 +35,6 @@ const PaletteGenerator = () => {
     }
   };
 
-  // Color harmony generation functions
   const generateAnalogousPalette = (base) => {
     return {
       primary: base.hex(),
