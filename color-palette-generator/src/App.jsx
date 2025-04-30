@@ -21,6 +21,8 @@ function App() {
     accent: "#8bc34a"
   });
 
+  const [baseColor, setBaseColor] = useState("#ff5722");
+  const [useBaseColor, setUseBaseColor] = useState(false);
   const [showExportPopup, setShowExportPopup] = useState(false);
 
   useEffect(() => {
@@ -57,6 +59,35 @@ function App() {
     saveAs(content, "palette.zip");
   };
 
+  const generatePalette = () => {
+    try {
+      // Choose base color based on user preference
+      const base = useBaseColor ? chroma(baseColor) : chroma.random();
+
+      // Create a palette with the base color as primary
+      const newPalette = {
+        primary: base.hex(),
+        secondary: base.set('hsl.h', (base.get('hsl.h') + 30) % 360).hex(),
+        accent: base.set('hsl.h', (base.get('hsl.h') + 60) % 360).hex(),
+        background: base.set('hsl.l', Math.min(0.95, base.get('hsl.l') + 0.3)).hex(),
+        text: base.set('hsl.l', Math.max(0.15, base.get('hsl.l') - 0.3)).hex()
+      };
+
+      setPalette(newPalette);
+    } catch (error) {
+      console.error("Error generating palette:", error);
+      // Fallback to a random color if there's an issue
+      const randomBase = chroma.random();
+      setPalette({
+        primary: randomBase.hex(),
+        secondary: randomBase.set('hsl.h', (randomBase.get('hsl.h') + 30) % 360).hex(),
+        accent: randomBase.set('hsl.h', (randomBase.get('hsl.h') + 60) % 360).hex(),
+        background: randomBase.set('hsl.l', Math.min(0.95, randomBase.get('hsl.l') + 0.3)).hex(),
+        text: randomBase.set('hsl.l', Math.max(0.15, randomBase.get('hsl.l') - 0.3)).hex()
+      });
+    }
+  };
+
   return (
     <div className="app-container">
       <Header />
@@ -80,23 +111,12 @@ function App() {
             />
           )}
           <Toolbar 
-            onGenerate={() => {
-              const base = chroma.random();
-              const baseHue = base.get('hsl.h');
-              const baseSat = base.get('hsl.s');
-              const baseLum = base.get('hsl.l');
-
-              const newPalette = {
-                text: base.darken(3).hex(),
-                background: base.brighten(3).hex(),
-                primary: base.hex(),
-                secondary: chroma.hsl((baseHue + 30) % 360, baseSat, baseLum).hex(),
-                accent: chroma.hsl((baseHue + 60) % 360, baseSat, baseLum).hex()
-              };
-
-              setPalette(newPalette);
-            }}
+            onGenerate={generatePalette}
             palette={palette}
+            baseColor={baseColor}
+            setBaseColor={setBaseColor}
+            useBaseColor={useBaseColor}
+            setUseBaseColor={setUseBaseColor}
           />
         </div>
       </div>
