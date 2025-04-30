@@ -5,5 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   
-  base: '/ColorCraft/', 
+  // For Vercel deployment, use root path (/) instead of a subpath
+  base: '/', 
 })
