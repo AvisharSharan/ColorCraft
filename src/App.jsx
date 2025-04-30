@@ -2,14 +2,17 @@ import { useState, useEffect } from "react";
 import chroma from "chroma-js";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
+
 import Toolbar from "./components/Toolbar";
 import ExportModal from "./components/ExportModal";
 import TypographyPreview from "./components/TypographyPreview";
 import ButtonPreview from "./components/ButtonPreview";
 import PaletteDisplay from "./components/PaletteDisplay";
+import PaletteHistory from "./components/PaletteHistory";
 import FeaturesSection from "./components/FeaturesSection";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 import "./styles/App.css";
 
 function App() {
@@ -21,9 +24,22 @@ function App() {
     accent: "#8bc34a"
   });
 
+  const [paletteHistory, setPaletteHistory] = useState([]);
+  const [showHistory, setShowHistory] = useState(false);
+  const [showExportPopup, setShowExportPopup] = useState(false);
   const [baseColor, setBaseColor] = useState("#ff5722");
   const [useBaseColor, setUseBaseColor] = useState(false);
-  const [showExportPopup, setShowExportPopup] = useState(false);
+
+  useEffect(() => {
+    const savedHistory = localStorage.getItem('paletteHistory');
+    if (savedHistory) {
+      setPaletteHistory(JSON.parse(savedHistory));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('paletteHistory', JSON.stringify(paletteHistory));
+  }, [paletteHistory]);
 
   useEffect(() => {
     document.documentElement.style.setProperty("--text", palette.text);
@@ -33,9 +49,60 @@ function App() {
     document.documentElement.style.setProperty("--accent", palette.accent);
 
     document.body.style.background = `linear-gradient(45deg, ${palette.primary}, ${palette.secondary})`;
-
     document.querySelector(".right-section").style.backgroundColor = palette.background;
   }, [palette]);
+
+  const generatePalette = () => {
+    try {
+      const base = useBaseColor ? chroma(baseColor) : chroma.random();
+
+      const newPalette = {
+        primary: base.hex(),
+        secondary: base.set('hsl.h', (base.get('hsl.h') + 30) % 360).hex(),
+        accent: base.set('hsl.h', (base.get('hsl.h') + 60) % 360).hex(),
+        background: base.set('hsl.l', Math.min(0.95, base.get('hsl.l') + 0.3)).hex(),
+        text: base.set('hsl.l', Math.max(0.15, base.get('hsl.l') - 0.3)).hex()
+      };
+
+      setPalette(newPalette);
+      addToHistory(newPalette);
+    } catch (error) {
+      console.error("Error generating palette:", error);
+      generateFallbackPalette();
+    }
+  };
+
+  const generateFallbackPalette = () => {
+    const randomBase = chroma.random();
+    const fallbackPalette = {
+      primary: randomBase.hex(),
+      secondary: randomBase.set('hsl.h', (randomBase.get('hsl.h') + 30) % 360).hex(),
+      accent: randomBase.set('hsl.h', (randomBase.get('hsl.h') + 60) % 360).hex(),
+      background: randomBase.set('hsl.l', Math.min(0.95, randomBase.get('hsl.l') + 0.3)).hex(),
+      text: randomBase.set('hsl.l', Math.max(0.15, randomBase.get('hsl.l') - 0.3)).hex()
+    };
+    
+    setPalette(fallbackPalette);
+    addToHistory(fallbackPalette);
+  };
+
+  const addToHistory = (newPalette) => {
+    const paletteWithTimestamp = {
+      ...newPalette,
+      timestamp: new Date().toISOString()
+    };
+    
+    setPaletteHistory(prevHistory => {
+      const updatedHistory = [paletteWithTimestamp, ...prevHistory];
+      return updatedHistory.slice(0, 10);
+    });
+  };
+
+  const applyHistoryPalette = (historyPalette) => {
+    const { timestamp, ...cleanPalette } = historyPalette;
+    setPalette(cleanPalette);
+    setShowHistory(false);
+  };
 
   const handleDownload = async () => {
     const zip = new JSZip();
@@ -59,35 +126,6 @@ function App() {
     saveAs(content, "palette.zip");
   };
 
-  const generatePalette = () => {
-    try {
-      // Choose base color based on user preference
-      const base = useBaseColor ? chroma(baseColor) : chroma.random();
-
-      // Create a palette with the base color as primary
-      const newPalette = {
-        primary: base.hex(),
-        secondary: base.set('hsl.h', (base.get('hsl.h') + 30) % 360).hex(),
-        accent: base.set('hsl.h', (base.get('hsl.h') + 60) % 360).hex(),
-        background: base.set('hsl.l', Math.min(0.95, base.get('hsl.l') + 0.3)).hex(),
-        text: base.set('hsl.l', Math.max(0.15, base.get('hsl.l') - 0.3)).hex()
-      };
-
-      setPalette(newPalette);
-    } catch (error) {
-      console.error("Error generating palette:", error);
-      // Fallback to a random color if there's an issue
-      const randomBase = chroma.random();
-      setPalette({
-        primary: randomBase.hex(),
-        secondary: randomBase.set('hsl.h', (randomBase.get('hsl.h') + 30) % 360).hex(),
-        accent: randomBase.set('hsl.h', (randomBase.get('hsl.h') + 60) % 360).hex(),
-        background: randomBase.set('hsl.l', Math.min(0.95, randomBase.get('hsl.l') + 0.3)).hex(),
-        text: randomBase.set('hsl.l', Math.max(0.15, randomBase.get('hsl.l') - 0.3)).hex()
-      });
-    }
-  };
-
   return (
     <div className="app-container">
       <Header />
@@ -97,19 +135,33 @@ function App() {
           <TypographyPreview palette={palette} />
           <ButtonPreview palette={palette} />
         </div>
+
         <div className="right-section">
           <PaletteDisplay palette={palette} />
-          <FeaturesSection 
-            onExportClick={() => setShowExportPopup(true)} 
-            onDownloadClick={handleDownload} 
-            palette={palette}
-          />
+          
+          {showHistory && (
+            <PaletteHistory 
+              paletteHistory={paletteHistory}
+              onClose={() => setShowHistory(false)}
+              onSelectPalette={applyHistoryPalette}
+            />
+          )}
+          
           {showExportPopup && (
             <ExportModal 
               palette={palette} 
               onClose={() => setShowExportPopup(false)} 
             />
           )}
+
+          <FeaturesSection 
+            onExportClick={() => setShowExportPopup(true)} 
+            onDownloadClick={handleDownload} 
+            palette={palette}
+            onHistoryClick={() => setShowHistory(true)}
+            hasHistory={paletteHistory.length > 0}
+          />
+          
           <Toolbar 
             onGenerate={generatePalette}
             palette={palette}
