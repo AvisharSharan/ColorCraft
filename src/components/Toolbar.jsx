@@ -1,7 +1,16 @@
 import React from 'react';
 import '../styles/Toolbar.css';
 
-const Toolbar = ({ onGenerate, palette, baseColor, setBaseColor, useBaseColor, setUseBaseColor }) => {
+const Toolbar = ({ 
+  onGenerate, 
+  palette, 
+  baseColor, 
+  setBaseColor, 
+  useBaseColor, 
+  setUseBaseColor,
+  harmonyMode,
+  setHarmonyMode
+}) => {
   return (
     <div className="toolbar">
       <div className="toolbar-options">
@@ -31,6 +40,23 @@ const Toolbar = ({ onGenerate, palette, baseColor, setBaseColor, useBaseColor, s
             />
           </div>
         )}
+
+        <div className="harmony-selector">
+          <label htmlFor="harmony-mode">Harmony:</label>
+          <select 
+            id="harmony-mode"
+            value={harmonyMode}
+            onChange={(e) => setHarmonyMode(e.target.value)}
+            title="Choose a color harmony type"
+          >
+            <option value="analogous">Analogous</option>
+            <option value="monochromatic">Monochromatic</option>
+            <option value="triadic">Triadic</option>
+            <option value="complementary">Complementary</option>
+            <option value="split-complementary">Split Complementary</option>
+            <option value="tetradic">Tetradic</option>
+          </select>
+        </div>
       </div>
       
       <button 
