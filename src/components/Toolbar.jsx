@@ -28,18 +28,16 @@ const Toolbar = ({
           </span>
         </div>
         
-        {useBaseColor && (
-          <div className="color-picker-container">
-            <label htmlFor="base-color">Base Color:</label>
-            <input 
-              type="color" 
-              id="base-color" 
-              value={baseColor || "#ffffff"}
-              onChange={(e) => setBaseColor(e.target.value)}
-              title="Choose a base color for your palette"
-            />
-          </div>
-        )}
+        <div className={`color-picker-container ${!useBaseColor ? 'hidden' : ''}`}>
+          <label htmlFor="base-color">Base Color:</label>
+          <input 
+            type="color" 
+            id="base-color" 
+            value={baseColor || "#ffffff"}
+            onChange={(e) => setBaseColor(e.target.value)}
+            title="Choose a base color for your palette"
+          />
+        </div>
 
         <div className="harmony-selector">
           <label htmlFor="harmony-mode">Harmony:</label>

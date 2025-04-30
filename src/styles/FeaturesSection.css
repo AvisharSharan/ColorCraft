@@ -94,15 +94,6 @@
   font-size: 1.2rem;
 }
 
-.history-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.history-btn:not(:disabled):hover {
-  transform: translateY(-2px);
-}
-
 .history-btn span {
   font-size: 1.2rem;
 }
