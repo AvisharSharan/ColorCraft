@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Toolbar.css';
+import chroma from 'chroma-js';
 
 const Toolbar = ({ 
   onGenerate, 
@@ -61,7 +62,7 @@ const Toolbar = ({
         className="generate-btn"
         style={{ 
           background: `linear-gradient(90deg, ${palette.secondary}, ${palette.primary})`, 
-          color: palette.background 
+          color: chroma.contrast(palette.primary, '#ffffff') > 2 ? '#ffffff' : palette.text 
         }}
         onClick={onGenerate}
       >

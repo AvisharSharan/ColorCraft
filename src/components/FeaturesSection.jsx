@@ -8,7 +8,7 @@ const FeaturesSection = ({ onExportClick, onDownloadClick, onHistoryClick, palet
       <button 
         className="export-btn" 
         onClick={onExportClick} 
-        style={{color: chroma.contrast(palette.primary, '#ffffff') > 2.5 ? '#ffffff' : palette.text }}
+        style={{color: chroma.contrast(palette.primary, '#ffffff') > 2 ? '#ffffff' : palette.text }}
       >Save
         <span className="material-icons">save</span>
       </button>
