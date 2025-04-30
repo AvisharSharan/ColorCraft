@@ -131,7 +131,6 @@
   border-color: var(--primary, #7c3aed);
 }
 
-/* Harmony selector styles */
 .harmony-selector {
   display: flex;
   align-items: center;

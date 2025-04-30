@@ -9,7 +9,6 @@
   --accent: #ff69b4;
 }
 
-/* Utility class for hover effects */
 .hover-effect {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -19,7 +18,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Layout */
 .theme-preview {
   margin-top: 2rem;
   display: flex;
@@ -47,7 +45,6 @@
   gap: 2rem;
 }
 
-/* Typography */
 .typography-section h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -65,7 +62,6 @@
   font-size: 1.8rem;
 }
 
-/* Buttons */
 .button-section,
 .button-card {
   display: flex;
@@ -92,7 +88,6 @@ button,
   background-color: var(--secondary);
 }
 
-/* Cards */
 .card,
 .preview-card {
   background-color: var(--secondary);
@@ -116,7 +111,6 @@ button,
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Accent Badge */
 .accent-badge {
   background-color: var(--accent);
   color: var(--text);
@@ -126,7 +120,6 @@ button,
   font-weight: bold;
 }
 
-/* Color Swatches */
 .color-codes {
   margin-top: 2rem;
   display: flex;
@@ -180,7 +173,6 @@ button,
   flex-wrap: wrap;
 }
 
-/* Gradient Cards */
 .preview-right {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -204,7 +196,6 @@ button,
   display: none;
 }
 
-/* Responsive Text Block */
 .text-block {
   padding: 1rem;
   border: 1px solid var(--text);
@@ -213,7 +204,6 @@ button,
   border-radius: 10px;
 }
 
-/* Palette Container */
 .palette-container {
   display: flex;
   justify-content: space-between;
