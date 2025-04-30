@@ -17,7 +17,7 @@ A modern, interactive color palette generator built with React and Vite that hel
 
 ## Screenshot
 
-![Color Palette Generator Screenshot](./screenshot.jpg)
+![Color Palette Generator Screenshot](./screenshot.jpeg)
 
 ## Technology Stack
 
