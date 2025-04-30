@@ -104,6 +104,11 @@ function App() {
     setShowHistory(false);
   };
 
+  const clearHistory = () => {
+    setPaletteHistory([]);
+    console.log("Palette history cleared");
+  };
+
   const handleDownload = async () => {
     const zip = new JSZip();
 
@@ -144,6 +149,7 @@ function App() {
               paletteHistory={paletteHistory}
               onClose={() => setShowHistory(false)}
               onSelectPalette={applyHistoryPalette}
+              onClearHistory={clearHistory}
             />
           )}
           

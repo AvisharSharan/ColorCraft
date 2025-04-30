@@ -1,6 +1,7 @@
 import React from "react";
+import "../styles/PaletteHistory.css";
 
-const PaletteHistory = ({ paletteHistory, onClose, onSelectPalette }) => {
+const PaletteHistory = ({ paletteHistory, onClose, onSelectPalette, onClearHistory }) => {
   return (
     <div className="palette-history">
       <h3>Palette History</h3>
@@ -26,7 +27,18 @@ const PaletteHistory = ({ paletteHistory, onClose, onSelectPalette }) => {
           ))
         )}
       </div>
-      <button className="close-history" onClick={onClose}>Close</button>
+      <div className="history-buttons">
+        <button className="close-history" onClick={onClose}>Close</button>
+        {paletteHistory.length > 0 && (
+          <button 
+            className="clear-history" 
+            onClick={onClearHistory}
+            title="Delete all palette history"
+          >
+            Clear History
+          </button>
+        )}
+      </div>
     </div>
   );
 };

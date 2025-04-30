@@ -1,0 +1,125 @@
+/* PaletteHistory component styles */
+.palette-history {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--background);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  z-index: 100;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-history h3 {
+  margin-top: 0;
+  color: var(--text);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.history-list {
+  overflow-y: auto;
+  max-height: 60vh;
+  padding-right: 0.5rem;
+}
+
+.history-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.history-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.history-colors {
+  display: flex;
+  gap: 8px;
+}
+
+.history-color {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.history-date {
+  font-size: 0.85rem;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+/* History button controls */
+.history-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.close-history,
+.clear-history {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, opacity 0.2s;
+  min-width: 100px;
+}
+
+.close-history {
+  background-color: var(--primary);
+  color: white;
+}
+
+.clear-history {
+  background-color: #f44336; /* Red color for warning/delete action */
+  color: white;
+}
+
+.close-history:hover,
+.clear-history:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.close-history:active,
+.clear-history:active {
+  transform: scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .palette-history {
+    width: 95%;
+    padding: 1rem;
+  }
+  
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .history-colors {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
