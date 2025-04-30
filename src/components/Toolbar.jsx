@@ -1,6 +1,6 @@
 import React from 'react';
-import chroma from 'chroma-js';
 import '../styles/Toolbar.css';
+import chroma from 'chroma-js';
 
 const Toolbar = ({ 
   onGenerate, 
@@ -12,19 +12,6 @@ const Toolbar = ({
   harmonyMode,
   setHarmonyMode
 }) => {
-  // Helper function to determine optimal text color for any background
-  const getTextColor = (backgroundColor) => {
-    // Use a higher contrast threshold (4.5) for better accessibility (WCAG AA standard)
-    return chroma.contrast(backgroundColor, '#ffffff') >= 4.5 ? '#ffffff' : '#000000';
-  };
-  
-  // For gradient backgrounds, we'll check contrast against the average color
-  const getGradientTextColor = (color1, color2) => {
-    // Create an average color for the gradient
-    const avgColor = chroma.mix(color1, color2, 0.5);
-    return getTextColor(avgColor);
-  };
-
   return (
     <div className="toolbar">
       <div className="toolbar-options">
@@ -75,11 +62,11 @@ const Toolbar = ({
         className="generate-btn"
         style={{ 
           background: `linear-gradient(90deg, ${palette.secondary}, ${palette.primary})`, 
-          color: getGradientTextColor(palette.secondary, palette.primary)
+          color: chroma.contrast(palette.primary, '#ffffff') > 2 ? '#ffffff' : palette.text 
         }}
         onClick={onGenerate}
       >
-        Generate Palette
+        Generate
       </button>
     </div>
   );
