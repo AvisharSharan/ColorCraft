@@ -7,17 +7,17 @@ A modern, interactive color palette generator built with React and Vite that hel
 ## Features
 
 - **Instant Palette Generation**: Create beautiful color palettes with a single click
-- **Custom Base Color**: Option to start with your own base color
-- **Palette History**: Access and reuse previously generated palettes
-- **Live Preview**: See your palette applied to typography, buttons, and UI elements in real-time
+- **Custom Base Color**: Option to start with your own base color using the color picker
+- **Palette History**: Access and reuse previously generated palettes with unlimited history
+- **Live Theme Preview**: See your palette applied to typography, buttons, and UI elements in real-time
 - **Multiple Export Options**:
   - Save color values as CSS variables
   - Download palette as a ZIP package with PNG preview and CSS variables
-- **Responsive Design**: Works beautifully on desktop and mobile devices
+  - Copy individual color codes in HEX format
 
 ## Screenshot
 
-![Color Palette Generator Screenshot](./screenshot.jpeg)
+![Color Palette Generator Screenshot](./screenshot1.jpeg)
 ![Color Palette History Screenhot](./screenshot2.jpeg)
 ![Color Palette Export Screenhot](./screenshot3.jpeg)
 
