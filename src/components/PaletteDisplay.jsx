@@ -78,13 +78,6 @@ const PaletteDisplay = ({ palette }) => {
           ></div>
         </div>
       </div>
-
-      <div className="harmony-info">
-        <div className="info-badge">
-          <span className="material-icons">tips_and_updates</span>
-          <span>Use these colors with CSS variables</span>
-        </div>
-      </div>
     </div>
   );
 };
