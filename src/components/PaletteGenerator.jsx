@@ -3,7 +3,7 @@ import chroma from "chroma-js";
 
 const PaletteGenerator = () => {
   const generateLightBackground = (base) => {
-    const minLightness = 0.85;
+    const minLightness = 0.95;
     let bgColor = base.set('hsl.s', base.get('hsl.s') * 0.5);
     const currentLightness = bgColor.get('hsl.l');
     if (currentLightness < minLightness) {
@@ -14,7 +14,7 @@ const PaletteGenerator = () => {
 
   const ensureVibrancyAndBrightness = (color) => {
     const minLightness = 0.5;
-    const maxLightness = 0.8;
+    const maxLightness = 0.95;
     const minSaturation = 0.5;
     let adjustedColor = color;
     if (adjustedColor.get('hsl.l') < minLightness) {
