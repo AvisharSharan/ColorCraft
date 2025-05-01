@@ -7,6 +7,7 @@ A modern, interactive color palette generator built with React and Vite that hel
 ## Features
 
 - **Instant Palette Generation**: Create beautiful color palettes with a single click
+- **Multiple Harmony Option**: Option to create color palettes with different harmonies
 - **Custom Base Color**: Option to start with your own base color using the color picker
 - **Palette History**: Access and reuse previously generated palettes with unlimited history
 - **Live Theme Preview**: See your palette applied to typography, buttons, and UI elements in real-time
