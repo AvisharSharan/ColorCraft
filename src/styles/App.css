@@ -42,7 +42,6 @@ body {
   padding: var(--spacing-standard) 0;
 }
 
-/* Grid Layout */
 .content-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -51,31 +50,31 @@ body {
   margin-bottom: 2.5rem;
 }
 
-/* Default grid item spans */
 .grid-item {
   border-radius: var(--border-radius-large);
   box-shadow: var(--box-shadow);
   transition: var(--transition-standard);
 }
 
-/* Grid item placement - Desktop layout */
 .palette-display-container {
-  grid-column: span 8; /* Left side of top row */
+  grid-column: span 8;
   grid-row: 1;
   padding: var(--spacing-standard);
   background-color: var(--background);
+  border: 0.5px solid var(--accent);
 }
 
 .toolbar-container {
-  grid-column: span 4; /* Right side of top row */
+  grid-column: span 4;
   grid-row: 1;
-  padding: var(--spacing-standard); /* Remove default grid item padding */
+  padding: var(--spacing-standard);
   background: var(--background);
   overflow: hidden;
+  border: 0.5px solid var(--accent);
 }
 
 .preview-container {
-  grid-column: span 6; /* Left side of bottom row */
+  grid-column: span 6;
   grid-row: 2;
   display: flex;
   flex-direction: column;
@@ -86,13 +85,13 @@ body {
 }
 
 .features-section-container {
-  grid-column: span 6; /* Right side of bottom row */
+  grid-column: span 6;
   grid-row: 2;
   padding: var(--spacing-standard);
   background-color: var(--background);
+  border: 0.5px solid var(--accent);
 }
 
-/* Preview card styles inside the preview container */
 .preview-card {
   background: var(--background);
   color: var(--text);
@@ -101,6 +100,7 @@ body {
   overflow: hidden;
   position: relative;
   box-shadow: var(--box-shadow);
+  border: 0.5px solid var(--accent);
 }
 
 .preview-card:hover {
@@ -131,7 +131,6 @@ body {
   font-size: 1.3rem;
 }
 
-/* Content card styles */
 .content-card {
   background-color: var(--background);
 }
@@ -141,7 +140,6 @@ body {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive grid adjustments */
 @media (max-width: 1200px) {
   .palette-display-container {
     grid-column: span 7;
