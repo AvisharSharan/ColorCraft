@@ -7,7 +7,6 @@
 @import "./FeaturesSection.css";
 @import "./PaletteHistory.css";
 @import "./Header.css";
-@import "./Footer.css";
 
 :root {
   --border-radius-large: 20px;
@@ -25,49 +24,83 @@ body {
   color: var(--text, #333);
   min-height: 100vh;
   overflow-x: hidden;
-  transform: scale(0.9);
-  transform-origin: bottom;
 }
 
 .app-container {
-display: flex;
+  display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
   position: relative;
   padding-top: 100px;
-  padding-bottom: 80px;
 }
 
-.app-container .main-app {
-  display: flex;
-  max-width: 1400px;
+.main-app {
   width: 90%;
+  max-width: 1400px;
   margin: 0 auto;
-  flex-direction: row;
-  gap: 2.5rem;
   padding: var(--spacing-standard) 0;
 }
 
-/* Left section - Preview Panel */
-.left-section {
-  flex: 1;
+/* Grid Layout */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Default grid item spans */
+.grid-item {
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition-standard);
+}
+
+/* Grid item placement - Desktop layout */
+.palette-display-container {
+  grid-column: span 8; /* Left side of top row */
+  grid-row: 1;
+  padding: var(--spacing-standard);
+  background-color: var(--background);
+}
+
+.toolbar-container {
+  grid-column: span 4; /* Right side of top row */
+  grid-row: 1;
+  padding: 0; /* Remove default grid item padding */
+  background: var(--background);
+  overflow: hidden;
+}
+
+.preview-container {
+  grid-column: span 6; /* Left side of bottom row */
+  grid-row: 2;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  min-width: 320px;
-  max-width: 420px;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
 }
 
+.features-section-container {
+  grid-column: span 6; /* Right side of bottom row */
+  grid-row: 2;
+  padding: var(--spacing-standard);
+  background-color: var(--background);
+}
+
+/* Preview card styles inside the preview container */
 .preview-card {
-  background: var(--background, #fff);
-  color: var(--text, #333);
+  background: var(--background);
+  color: var(--text);
   border-radius: var(--border-radius-large);
   padding: var(--spacing-standard);
-  box-shadow: var(--box-shadow);
-  transition: var(--transition-standard);
   overflow: hidden;
   position: relative;
+  box-shadow: var(--box-shadow);
 }
 
 .preview-card:hover {
@@ -98,22 +131,69 @@ display: flex;
   font-size: 1.3rem;
 }
 
-.right-section {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
+/* Content card styles */
 .content-card {
   background-color: var(--background);
-  border-radius: var(--border-radius-large);
-  padding: var(--spacing-standard);
-  box-shadow: var(--box-shadow);
-  transition: var(--transition-standard);
 }
 
 .content-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 1200px) {
+  .palette-display-container {
+    grid-column: span 7;
+  }
+  
+  .toolbar-container {
+    grid-column: span 5;
+  }
+  
+  .preview-container {
+    grid-column: span 6;
+  }
+  
+  .features-section-container {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 992px) {
+  .content-grid {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto auto auto;
+  }
+  
+  .palette-display-container {
+    grid-column: span 12;
+    grid-row: 1;
+  }
+  
+  .toolbar-container {
+    grid-column: span 12;
+    grid-row: 2;
+  }
+  
+  .preview-container {
+    grid-column: span 12;
+    grid-row: 3;
+  }
+  
+  .features-section-container {
+    grid-column: span 12;
+    grid-row: 4;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .grid-item {
+    grid-column: span 1;
+  }
 }
