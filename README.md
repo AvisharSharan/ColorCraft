@@ -138,8 +138,8 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 <div align="center">
   <p>Handcrafted by Avishar ⚡</p>
   <p>
-    <a href="https://github.com/yourusername">GitHub</a> •
-    <a href="https://twitter.com/yourusername">Twitter</a> •
-    <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
+    <a href="https://github.com/AvisharSharan">GitHub</a> •
+    <a href="https://twitter.com/AvisharS">Twitter</a> •
+    <a href="https://linkedin.com/in/avishars">LinkedIn</a>
   </p>
 </div>
