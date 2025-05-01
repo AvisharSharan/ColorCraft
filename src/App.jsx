@@ -16,18 +16,18 @@ import "./styles/App.css";
 
 function App() {
   const [palette, setPalette] = useState({
-    primary: "#ff5722",
-    secondary: "#03a9f4",
-    accent: "#8bc34a", 
-    background: "#f5f5f5",
-    text: "#1a1a1a",
+    primary: "#6200ee",    // Deep Purple
+    secondary: "#03dac6",  // Teal
+    accent: "#bb86fc",     // Light Purple
+    background: "#ffffff", // White
+    text: "#121212",       // Dark Gray
   });
 
   const [paletteHistory, setPaletteHistory] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
   const [showExportPopup, setShowExportPopup] = useState(false);
   
-  const [baseColor, setBaseColor] = useState("#ff5722");
+  const [baseColor, setBaseColor] = useState("#6200ee");
   const [useBaseColor, setUseBaseColor] = useState(false);
   const [harmonyMode, setHarmonyMode] = useState("analogous");
 
