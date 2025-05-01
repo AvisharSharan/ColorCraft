@@ -25,10 +25,12 @@ body {
   color: var(--text, #333);
   min-height: 100vh;
   overflow-x: hidden;
+  transform: scale(0.9);
+  transform-origin: bottom;
 }
 
 .app-container {
-  display: flex;
+display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
