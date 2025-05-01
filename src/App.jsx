@@ -10,7 +10,6 @@ import PaletteDisplay from "./components/PaletteDisplay";
 import PaletteHistory from "./components/PaletteHistory";
 import FeaturesSection from "./components/FeaturesSection";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import PaletteGenerator from "./components/PaletteGenerator";
 
 import "./styles/App.css";
@@ -114,24 +113,45 @@ function App() {
       <Header palette={palette} />
 
       <div className="main-app">
-        <div className="left-section">
-          <div className="preview-card">
-            <h3><span className="material-icons">format_color_text</span> Typography</h3>
-            <TypographyPreview palette={palette} />
-          </div>
-          
-          <div className="preview-card">
-            <h3><span className="material-icons">touch_app</span> Buttons</h3>
-            <ButtonPreview palette={palette} />
-          </div>
-        </div>
-
-        <div className="right-section">
-          <div className="content-card palette-display-container">
+        <div className="content-grid">
+          {/* Top Row */}
+          {/* Section 1: Palette Display - Top Left */}
+          <div className="grid-item content-card palette-display-container">
             <PaletteDisplay palette={palette} />
           </div>
           
-          <div className="content-card features-section-container">
+          {/* Section 2: Toolbar - Top Right */}
+          <div className="grid-item toolbar-container">
+            <Toolbar 
+              onGenerate={handleGeneratePalette}
+              palette={palette}
+              baseColor={baseColor}
+              setBaseColor={setBaseColor}
+              useBaseColor={useBaseColor}
+              setUseBaseColor={setUseBaseColor}
+              harmonyMode={harmonyMode}
+              setHarmonyMode={setHarmonyMode}
+            />
+          </div>
+          
+          {/* Bottom Row */}
+          {/* Section 3: Preview Cards - Bottom Left */}
+          <div className="grid-item preview-container">
+            {/* Typography Preview */}
+            <div className="preview-card typography-preview-card">
+              <h3><span className="material-icons">format_color_text</span> Typography</h3>
+              <TypographyPreview palette={palette} />
+            </div>
+            
+            {/* Buttons Preview */}
+            <div className="preview-card buttons-preview-card">
+              <h3><span className="material-icons">touch_app</span> Buttons</h3>
+              <ButtonPreview palette={palette} />
+            </div>
+          </div>
+          
+          {/* Section 4: Features Section - Bottom Right */}
+          <div className="grid-item content-card features-section-container">
             <FeaturesSection 
               onExportClick={() => setShowExportPopup(true)} 
               onDownloadClick={handleDownload} 
@@ -140,37 +160,25 @@ function App() {
               hasHistory={paletteHistory.length > 0}
             />
           </div>
-          
-          {showHistory && (
-            <PaletteHistory 
-              paletteHistory={paletteHistory}
-              onClose={() => setShowHistory(false)}
-              onSelectPalette={applyHistoryPalette}
-              onClearHistory={clearHistory}
-            />
-          )}
-          
-          {showExportPopup && (
-            <ExportModal 
-              palette={palette} 
-              onClose={() => setShowExportPopup(false)} 
-            />
-          )}
-          
-          <Toolbar 
-            onGenerate={handleGeneratePalette}
-            palette={palette}
-            baseColor={baseColor}
-            setBaseColor={setBaseColor}
-            useBaseColor={useBaseColor}
-            setUseBaseColor={setUseBaseColor}
-            harmonyMode={harmonyMode}
-            setHarmonyMode={setHarmonyMode}
-          />
         </div>
+        
+        {/* Modals */}
+        {showHistory && (
+          <PaletteHistory 
+            paletteHistory={paletteHistory}
+            onClose={() => setShowHistory(false)}
+            onSelectPalette={applyHistoryPalette}
+            onClearHistory={clearHistory}
+          />
+        )}
+        
+        {showExportPopup && (
+          <ExportModal 
+            palette={palette} 
+            onClose={() => setShowExportPopup(false)} 
+          />
+        )}
       </div>
-
-      <Footer palette={palette} />
     </div>
   );
 }
