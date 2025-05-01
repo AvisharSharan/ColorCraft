@@ -1,0 +1,71 @@
+.app-footer {
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.footer-signature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.footer-signature p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.footer-signature .material-icons {
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.bolt {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.source-code-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.source-code-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.source-code-btn .material-icons {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 576px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+}

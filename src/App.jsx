@@ -11,6 +11,7 @@ import PaletteHistory from "./components/PaletteHistory";
 import FeaturesSection from "./components/FeaturesSection";
 import Header from "./components/Header";
 import PaletteGenerator from "./components/PaletteGenerator";
+import Footer from "./components/Footer";
 
 import "./styles/App.css";
 
@@ -179,6 +180,8 @@ function App() {
           />
         )}
       </div>
+
+      <Footer palette={palette} />
     </div>
   );
 }
