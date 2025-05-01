@@ -10,7 +10,7 @@ const FeaturesSection = ({ onExportClick, onDownloadClick, onHistoryClick, palet
         onClick={onExportClick} 
         style={{color: chroma.contrast(palette.primary, '#ffffff') > 1.5 ? '#ffffff' : palette.text }}
       >Save
-        <span className="material-icons">save</span>
+        <span className="material-icons">content_copy</span>
       </button>
       <button 
         className="download-btn" 
