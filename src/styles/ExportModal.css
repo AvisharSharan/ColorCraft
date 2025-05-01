@@ -1,110 +1,147 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    animation: fadeIn 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+  background: var(--background, #ffffff);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  animation: slideIn 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 1.5rem 1.5rem 0.5rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-header h3::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  margin-left: 0.5rem;
+}
+
+.modal-header .material-icons {
+  font-size: 1.2rem;
+}
+
+.modal-body {
+  padding: 0.5rem 1.5rem 1.5rem;
+}
+
+.code-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.code-block {
+  width: 100%;
+  padding: 1rem;
+  margin: 0;
+  border-radius: 8px;
+  font-family: 'Consolas', monospace;
+  font-size: 0.95rem;
+  overflow-x: auto;
+  background: rgba(0, 0, 0, 0.03);
+  white-space: pre;
+  color: var(--text);
+}
+
+.code-block code {
+  display: block;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.modal-footer button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.copy-btn {
+  color: #fff;
+}
+
+.copy-btn:hover {
+  transform: scale(1.05);
+}
+
+.copy-btn .material-icons {
+  font-size: 1.1rem;
+}
+
+.close-btn {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text);
+}
+
+.close-btn:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
   }
-  
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 576px) {
   .modal-content {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 500px;
-    animation: slideIn 0.3s ease-in-out;
-    position: relative;
+    width: 95%;
   }
   
-  .modal-content h3 {
-    margin-top: 0;
-    font-size: 1.8rem;
-    color: var(--text);
-    text-align: center;
-    margin-bottom: 1rem;
+  .modal-footer {
+    gap: 0.8rem;
   }
-  
-  .modal-content textarea {
-    width: calc(100% - 1.6rem);
-    margin: 0 auto;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 1rem;
-    resize: none;
-    background: #f9f9f9;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: block;
-    box-sizing: border-box;
-  }
-  
-  .modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-  }
-  
-  .modal-content button {
-    background: var(--primary);
-    margin-top: 10px;
-    color: #fff;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-  
-  .modal-content button:hover {
-    background: var(--secondary);
-    transform: scale(1.05);
-  }
-  
-  .modal-content button:active {
-    transform: scale(0.95);
-  }
-  
-  .modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #888;
-    transition: color 0.3s ease;
-  }
-  
-  .modal-close:hover {
-    color: #000;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideIn {
-    from {
-      transform: translateY(-20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+}

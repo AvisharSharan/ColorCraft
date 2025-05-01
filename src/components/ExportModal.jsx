@@ -4,31 +4,50 @@ import "../styles/ExportModal.css";
 
 const ExportModal = ({ palette, onClose }) => {
   const [showExportPopup, setShowExportPopup] = useState(true);
+  const [copied, setCopied] = useState(false);
+  
+  const cssText = `:root {\n  --text: ${palette.text};\n  --background: ${palette.background};\n  --primary: ${palette.primary};\n  --secondary: ${palette.secondary};\n  --accent: ${palette.accent};\n}`;
+  
+  const handleCopy = () => {
+    navigator.clipboard.writeText(cssText);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     showExportPopup && (
       <div className="modal-overlay" onClick={onClose}>
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <h3>Export Palette</h3>
-          <div style={{ marginTop: "1rem" }}>
-            <textarea
-              readOnly
-              value={`:root {\n  --text: ${palette.text};\n  --background: ${palette.background};\n  --primary: ${palette.primary};\n  --secondary: ${palette.secondary};\n  --accent: ${palette.accent};\n}`}
-              style={{ width: "100%", height: "200px", overflow: "hidden" }}
-            />
+          <div className="modal-header">
+            <h3>
+              <span className="material-icons">code</span>
+              Export Palette
+            </h3>
           </div>
-          <button 
-            onClick={() => {
-              navigator.clipboard.writeText(
-                `:root {\n  --text: ${palette.text};\n  --background: ${palette.background};\n  --primary: ${palette.primary};\n  --secondary: ${palette.secondary};\n  --accent: ${palette.accent};\n}`
-              );
-              alert('Palette copied to clipboard!');
-            }}
-            style={{ marginRight: "1rem" }}
-          >
-            Copy
-          </button>
-          <button onClick={onClose}>Close</button>
+          
+          <div className="modal-body">
+            <div className="code-container">
+              <pre className="code-block">
+                <code>{cssText}</code>
+              </pre>
+            </div>
+          </div>
+          
+          <div className="modal-footer">
+            <button 
+              className="copy-btn"
+              onClick={handleCopy}
+              style={{
+                background: copied ? `${palette.accent}` : `${palette.primary}`,
+              }}
+            >
+              <span className="material-icons">{copied ? 'check' : 'content_copy'}</span>
+              {copied ? 'Copied' : 'Copy'}
+            </button>
+            <button className="close-btn" onClick={onClose}>
+              Close
+            </button>
+          </div>
         </div>
       </div>
     )
