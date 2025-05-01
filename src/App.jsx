@@ -140,13 +140,13 @@ function App() {
           {/* Section 3: Preview Cards - Bottom Left */}
           <div className="grid-item preview-container">
             {/* Typography Preview */}
-            <div className="preview-card typography-preview-card">
+            <div className="grid-item preview-card typography-preview-card">
               <h3><span className="material-icons">format_color_text</span> Typography</h3>
               <TypographyPreview palette={palette} />
             </div>
             
             {/* Buttons Preview */}
-            <div className="preview-card buttons-preview-card">
+            <div className="grid-item preview-card buttons-preview-card">
               <h3><span className="material-icons">touch_app</span> Buttons</h3>
               <ButtonPreview palette={palette} />
             </div>
