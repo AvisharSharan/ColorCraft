@@ -13,8 +13,8 @@ const PaletteGenerator = () => {
   };
 
   const ensureVibrancyAndBrightness = (color) => {
-    const minLightness = 0.35;
-    const maxLightness = 0.75;
+    const minLightness = 0.5;
+    const maxLightness = 0.8;
     const minSaturation = 0.5;
     let adjustedColor = color;
     if (adjustedColor.get('hsl.l') < minLightness) {
