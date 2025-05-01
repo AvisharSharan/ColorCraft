@@ -17,11 +17,11 @@ import "./styles/App.css";
 
 function App() {
   const [palette, setPalette] = useState({
-    text: "#1a1a1a",
-    background: "#f5f5f5",
     primary: "#ff5722",
     secondary: "#03a9f4",
-    accent: "#8bc34a"
+    accent: "#8bc34a", 
+    background: "#f5f5f5",
+    text: "#1a1a1a",
   });
 
   const [paletteHistory, setPaletteHistory] = useState([]);

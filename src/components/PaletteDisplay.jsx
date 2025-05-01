@@ -18,7 +18,7 @@ const PaletteDisplay = ({ palette }) => {
           style={{ backgroundColor: color }}
           onClick={() => handleColorClick(color)}
         >
-          <p className="color-hex">{copiedColor === color ? "Copied!" : color}</p>
+          <p className="color-hex">{key} - {copiedColor === color ? "Copied!" : color}</p>
         </div>
       ))}
     </div>
