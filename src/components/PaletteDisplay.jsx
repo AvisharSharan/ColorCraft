@@ -28,11 +28,11 @@ const PaletteDisplay = ({ palette }) => {
 
   return (
     <div className="palette-display-wrapper">
-      <div className="palette-header">
-        <div className="header-content">
+      <div className="palette-display-header">
+        <h3>
           <span className="material-icons">palette</span>
-          <h2>Your Color Palette</h2>
-        </div>
+          Your Color Palette
+        </h3>
         <p className="palette-subtitle">Click on any color to copy its hex code</p>
       </div>
 
