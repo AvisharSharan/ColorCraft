@@ -176,12 +176,6 @@
   box-shadow: var(--box-shadow);
 }
 
-.harmony-info {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.5rem;
-}
-
 .info-badge {
   display: flex;
   align-items: center;
