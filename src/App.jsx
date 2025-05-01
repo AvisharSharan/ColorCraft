@@ -111,7 +111,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header />
+      <Header palette={palette} />
 
       <div className="main-app">
         <div className="left-section" style={{ backgroundColor: palette.background }}>
