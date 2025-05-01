@@ -12,10 +12,10 @@ const PaletteGenerator = () => {
     return bgColor.hex();
   };
 
-  const ensureVibrancyAndBrightness = (color) => {
-    const minLightness = 0.5;
-    const maxLightness = 0.95;
-    const minSaturation = 0.5;
+  const ensureVibrancyAndBrightness = (color, isPrimary = false) => {
+    const minLightness = isPrimary ? 0.35 : 0.5;
+    const maxLightness = isPrimary ? 0.7 : 0.95;
+    const minSaturation = isPrimary ? 0.6 : 0.5;
     let adjustedColor = color;
     if (adjustedColor.get('hsl.l') < minLightness) {
       adjustedColor = adjustedColor.set('hsl.l', minLightness);
@@ -37,7 +37,8 @@ const PaletteGenerator = () => {
       } else {
         base = chroma.random();
       }
-      base = ensureVibrancyAndBrightness(base);
+      // Use isPrimary=true flag for the base/primary color
+      base = ensureVibrancyAndBrightness(base, true);
 
       let newPalette = {};
 
@@ -133,7 +134,7 @@ const PaletteGenerator = () => {
 
   const generateFallbackPalette = () => {
     const randomBase = chroma.random();
-    const adjustedBase = ensureVibrancyAndBrightness(randomBase);
+    const adjustedBase = ensureVibrancyAndBrightness(randomBase, true);
     return {
       primary: adjustedBase.hex(),
       secondary: adjustedBase.set('hsl.h', (adjustedBase.get('hsl.h') + 30) % 360).hex(),
