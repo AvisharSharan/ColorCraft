@@ -28,7 +28,7 @@
   gap: 0.8rem;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--accent);
 }
 
 .history-title .material-icons {
@@ -70,7 +70,6 @@
 }
 
 .history-item {
-  background: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   padding: 1rem;
   display: flex;
