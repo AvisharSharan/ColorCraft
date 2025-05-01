@@ -35,7 +35,7 @@
 
 .brand-name {
   font-weight: 600;
-  color: var(--primary, #7c3aed);
+  color: var(--text, #7c3aed);
 }
 
 .creator {
