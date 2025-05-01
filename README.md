@@ -1,36 +1,47 @@
-# Color Palette Generator
+# ColorCraft
 
-![ColorCraftLogo](./public/ColorCraftLogo.svg)
+<div align="center">
+  <h3>Color Palette Generator</h3>
+  <p>Create harmonious color schemes for your design projects with ease</p>
 
-A modern, interactive color palette generator built with React and Vite that helps designers and developers create harmonious color schemes for their projects.
+  ![React](https://img.shields.io/badge/React-19.0.0-61DAFB)
+  ![Vite](https://img.shields.io/badge/Vite-6.3.1-646CFF)
+  ![Chroma.js](https://img.shields.io/badge/Chroma.js-3.1.2-12CBC4)
+</div>
 
-## Features
+<br>
 
-- **Instant Palette Generation**: Create beautiful color palettes with a single click
-- **Multiple Harmony Option**: Option to create color palettes with different harmonies
-- **Custom Base Color**: Option to start with your own base color using the color picker
-- **Palette History**: Access and reuse previously generated palettes with unlimited history
-- **Live Theme Preview**: See your palette applied to typography, buttons, and UI elements in real-time
-- **Multiple Export Options**:
-  - Save color values as CSS variables
-  - Download palette as a ZIP package with PNG preview and CSS variables
-  - Copy individual color codes in HEX format
+## ✨ Features
 
-## Screenshot
+- **🎨 Instant Palette Generation** - Create beautiful color palettes with a single click
+- **🧩 Multiple Harmony Types** - Choose from Analogous, Monochromatic, Triadic, Complementary, Split-Complementary, and Tetradic color harmonies
+- **🖌️ Custom Base Color** - Start with your own base color using the intuitive color picker
+- **⏱️ Palette History** - Access and reuse previously generated palettes with persistent local storage
+- **👁️ Live Theme Preview** - See your palette applied to typography, buttons, and UI elements in real-time
+- **📤 Multiple Export Options**:
+  - Copy color values as CSS variables
+  - Download palette as a ZIP package with PNG swatch and CSS variables
+  - Quick-copy individual color hex codes
 
-![Color Palette Generator Screenshot](./screenshot1.jpeg)
-![Color Palette History Screenhot](./screenshot2.jpeg)
-![Color Palette Export Screenhot](./screenshot3.jpeg)
+## 📸 Screenshots
 
-## Technology Stack
+<div align="center">
+  <img src="./screenshot1.jpeg" alt="Color Palette Generator Screenshot" width="80%" />
+  <br><br>
+  <img src="./screenshot2.jpeg" alt="Color Palette History Screenshot" width="80%" />
+  <br><br>
+  <img src="./screenshot3.jpeg" alt="Color Palette Export Screenshot" width="80%" />
+</div>
 
-- **React**: UI library for building the interface
-- **Vite**: Fast build tool and development server
-- **Chroma.js**: Color manipulation library
-- **JSZip & FileSaver**: For creating and downloading zip archives
-- **Material Icons**: For UI iconography
+## 🛠️ Technology Stack
 
-## Getting Started
+- **⚛️ React** - UI library for building the interface
+- **⚡ Vite** - Fast build tool and development server
+- **🎭 Chroma.js** - Color manipulation library
+- **📦 JSZip & FileSaver** - For creating and downloading zip archives
+- **🔍 Material Icons** - For UI iconography
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -39,29 +50,38 @@ A modern, interactive color palette generator built with React and Vite that hel
 
 ### Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/ColorPaletteGenerator.git
-cd ColorPaletteGenerator
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/AvisharSharan/ColorCraft.git
+   cd ColorCraft
+   ```
 
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-3. Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
+3. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+4. **Open your browser** and navigate to `http://localhost:5173`
 
-## Project Structure
+## 🧠 How It Works
+
+ColorCraft uses advanced color theory algorithms to generate harmonious color palettes:
+
+1. Selects base colors using color harmony principles
+2. Applies intelligent brightness and saturation adjustments
+3. Ensures color accessibility and visual balance
+4. Generates text colors with appropriate contrast ratios
+
+## 🧩 Project Structure
 
 ```
 src/
@@ -72,28 +92,54 @@ src/
 │   ├── Footer.jsx
 │   ├── Header.jsx
 │   ├── PaletteDisplay.jsx
+│   ├── PaletteGenerator.jsx
 │   ├── PaletteHistory.jsx
 │   ├── ThemePreview.jsx
 │   ├── Toolbar.jsx
 │   └── TypographyPreview.jsx
 ├── styles/             # Component CSS files
-│   ├── App.css
-│   ├── ButtonPreview.css
-│   └── ...
 ├── App.jsx             # Main application component
 └── main.jsx            # Application entry point
 ```
 
-## Usage
+## 📝 User Guide
 
-1. **Generate a Palette**: Click the "Generate" button to create a new random color palette
-2. **Use a Base Color**: Toggle the "Use Base Color" option and select your preferred base color
-3. **View History**: Click the "History" button to see and reuse previously generated palettes
-4. **Export**: Click the "Save" button to copy CSS variables or "Download" to get a ZIP file
+1. **Generate a Palette**
+   - Click the "Generate" button to create a new random color palette
+   - Toggle "Use Base Color" to start with your own chosen color
+   - Select different harmony types to explore color relationship options
 
-## Acknowledgments
+2. **Customize Your Palette**
+   - View live previews of your palette in different UI contexts
+   - See typography and button styling with your palette
+
+3. **Save Your Work**
+   - Access palette history to view and reuse previous palettes
+   - Copy CSS variables for direct use in your projects
+   - Download a ZIP containing PNG swatch and text files
+   - Click individual color cards to copy specific hex codes
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 👏 Acknowledgments
 
 - Built as a project for Google Developer Group On Campus SRM recruitment task
-- Inspired by modern design tool workflows
+- Inspired by modern design tool workflows and color theory principles
+- Uses [Chroma.js](https://gka.github.io/chroma.js/) for color manipulation
 
-Handcrafted by Avishar ⚡
+<div align="center">
+  <p>Handcrafted by Avishar ⚡</p>
+  <p>
+    <a href="https://github.com/yourusername">GitHub</a> •
+    <a href="https://twitter.com/yourusername">Twitter</a> •
+    <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
+  </p>
+</div>
