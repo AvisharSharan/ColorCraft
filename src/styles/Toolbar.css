@@ -219,6 +219,31 @@
   cursor: not-allowed;
 }
 
+
+.palette-note {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+.palette-note p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text);
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.palette-note .material-icons {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 576px) {
   .toolbar-row {
