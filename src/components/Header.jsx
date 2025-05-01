@@ -17,7 +17,7 @@ const Header = ({ palette = {} }) => {
           <div className="header-badge" 
             style={{ 
               background: palette.primary ? `linear-gradient(90deg, ${palette.secondary || '#7c3aed'}, ${palette.primary || '#3a87ed'})` : undefined,
-              color: textColor
+              color: "fff"
             }}>
             <span className="badge-text">Color Palette Generator</span>
           </div>
