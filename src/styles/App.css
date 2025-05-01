@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @import "./TypographyPreview.css";
 @import "./ButtonPreview.css";
@@ -8,52 +9,109 @@
 @import "./Header.css";
 @import "./Footer.css";
 
+:root {
+  --border-radius-large: 20px;
+  --border-radius-medium: 16px;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --transition-standard: all 0.3s ease;
+  --spacing-standard: 2rem;
+}
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: var(--text, #333);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 80px;
 }
 
 .app-container .main-app {
   display: flex;
-  max-width: 1200px;
+  max-width: 1400px;
+  width: 90%;
+  margin: 0 auto;
   flex-direction: row;
-  gap: 2rem;
+  gap: 2.5rem;
+  padding: var(--spacing-standard) 0;
 }
 
+/* Left section - Preview Panel */
 .left-section {
   flex: 1;
-  background: var(--background);
-  color: var(--text);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 320px;
+  max-width: 420px;
+}
+
+.preview-card {
+  background: var(--background, #fff);
+  color: var(--text, #333);
+  border-radius: var(--border-radius-large);
+  padding: var(--spacing-standard);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition-standard);
+  overflow: hidden;
+  position: relative;
+}
+
+.preview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.preview-card h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.preview-card h3::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  margin-left: 0.5rem;
+}
+
+.preview-card .material-icons {
+  font-size: 1.3rem;
 }
 
 .right-section {
-  flex: 3;
-  background: #ffffff;
+  flex: 2;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.content-card {
+  background-color: var(--background);
+  border-radius: var(--border-radius-large);
+  padding: var(--spacing-standard);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition-standard);
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }

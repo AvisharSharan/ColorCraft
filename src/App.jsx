@@ -53,7 +53,6 @@ function App() {
     document.documentElement.style.setProperty("--accent", palette.accent);
 
     document.body.style.background = `linear-gradient(45deg, ${palette.primary}, ${palette.secondary})`;
-    document.querySelector(".right-section").style.backgroundColor = palette.background;
   }, [palette]);
   const handleGeneratePalette = () => {
     const newPalette = generateColorPalette(harmonyMode, baseColor, useBaseColor);
@@ -114,13 +113,32 @@ function App() {
       <Header palette={palette} />
 
       <div className="main-app">
-        <div className="left-section" style={{ backgroundColor: palette.background }}>
-          <TypographyPreview palette={palette} />
-          <ButtonPreview palette={palette} />
+        <div className="left-section">
+          <div className="preview-card">
+            <h3><span className="material-icons">format_color_text</span> Typography</h3>
+            <TypographyPreview palette={palette} />
+          </div>
+          
+          <div className="preview-card">
+            <h3><span className="material-icons">touch_app</span> Buttons</h3>
+            <ButtonPreview palette={palette} />
+          </div>
         </div>
 
         <div className="right-section">
-          <PaletteDisplay palette={palette} />
+          <div className="content-card palette-display-container">
+            <PaletteDisplay palette={palette} />
+          </div>
+          
+          <div className="content-card features-section-container">
+            <FeaturesSection 
+              onExportClick={() => setShowExportPopup(true)} 
+              onDownloadClick={handleDownload} 
+              palette={palette}
+              onHistoryClick={() => setShowHistory(true)}
+              hasHistory={paletteHistory.length > 0}
+            />
+          </div>
           
           {showHistory && (
             <PaletteHistory 
@@ -137,14 +155,6 @@ function App() {
               onClose={() => setShowExportPopup(false)} 
             />
           )}
-
-          <FeaturesSection 
-            onExportClick={() => setShowExportPopup(true)} 
-            onDownloadClick={handleDownload} 
-            palette={palette}
-            onHistoryClick={() => setShowHistory(true)}
-            hasHistory={paletteHistory.length > 0}
-          />
           
           <Toolbar 
             onGenerate={handleGeneratePalette}
