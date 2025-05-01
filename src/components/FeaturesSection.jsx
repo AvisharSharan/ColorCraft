@@ -24,7 +24,7 @@ const FeaturesSection = ({ onExportClick, onDownloadClick, onHistoryClick, palet
           onClick={onExportClick}
           style={{
             background: `linear-gradient(135deg, ${palette.primary}, ${chroma(palette.primary).darken(0.3).hex()})`,
-            color: getContrastColor(palette.primary)
+            color: "#fff"
           }}
         >
           <span className="material-icons">content_copy</span>
@@ -36,7 +36,7 @@ const FeaturesSection = ({ onExportClick, onDownloadClick, onHistoryClick, palet
           onClick={onDownloadClick}
           style={{
             background: `linear-gradient(135deg, ${palette.secondary}, ${chroma(palette.secondary).darken(0.3).hex()})`,
-            color: getContrastColor(palette.secondary)
+            color: "#fff"
           }}
         >
           <span className="material-icons">download</span>
@@ -49,7 +49,7 @@ const FeaturesSection = ({ onExportClick, onDownloadClick, onHistoryClick, palet
           disabled={!hasHistory}
           style={{
             background: `linear-gradient(135deg, ${palette.accent}, ${chroma(palette.accent).darken(0.3).hex()})`,
-            color: getContrastColor(palette.accent),
+            color: "#fff",
             opacity: hasHistory ? 1 : 0.7
           }}
           title={!hasHistory ? "Generate palettes to build history" : "View previous palettes"}

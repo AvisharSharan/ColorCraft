@@ -7,8 +7,7 @@ const ButtonPreview = ({ palette }) => (
       style={{ 
         width: "190px",
         fontWeight: "bold",
-        backgroundColor: palette.primary, 
-        color: chroma.contrast(palette.primary, '#ffffff') > 2.5 ? '#ffffff' : palette.text 
+        backgroundColor: palette.primary,  
       }} 
       className="primary-btn"
     >
@@ -19,7 +18,6 @@ const ButtonPreview = ({ palette }) => (
         width: "190px",
         fontWeight: "bold",
         backgroundColor: palette.secondary, 
-        color: chroma.contrast(palette.secondary, '#ffffff') > 2.5 ? '#ffffff' : palette.text  
       }} 
       className="secondary-btn"
     >

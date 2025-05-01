@@ -11,7 +11,7 @@
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--accent);
 }
 
 .features-title .material-icons {
@@ -65,14 +65,4 @@
 
 .feature-btn[disabled] {
   cursor: not-allowed;
-}
-
-@media (max-width: 768px) {
-  .features-buttons {
-    flex-direction: column;
-  }
-  
-  .feature-btn {
-    width: 100%;
-  }
 }

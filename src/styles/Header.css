@@ -3,7 +3,7 @@
   top: 24px;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 900;
   display: flex;
   justify-content: center;
 }
@@ -55,42 +55,4 @@
   border-radius: 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
-}
-
-/* Media queries for responsive design */
-@media (max-width: 768px) {
-  .app-header {
-    top: 16px;
-  }
-  
-  .header-content {
-    padding: 0.6rem 1.2rem;
-  }
-  
-  .logo {
-    height: 28px;
-  }
-  
-  .app-title {
-    font-size: 1.2rem;
-  }
-  
-  .header-badge {
-    font-size: 0.85rem;
-    padding: 0.4rem 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-content {
-    gap: 1rem;
-  }
-  
-  .logo {
-    height: 24px;
-  }
-  
-  .app-title {
-    font-size: 1.1rem;
-  }
 }

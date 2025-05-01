@@ -62,7 +62,7 @@ const Toolbar = ({
         className="generate-btn"
         style={{ 
           background: `linear-gradient(90deg, ${palette.secondary}, ${palette.primary})`, 
-          color: chroma.contrast(palette.primary, '#ffffff') > 2 ? '#ffffff' : palette.text 
+          color: "#fff"
         }}
         onClick={onGenerate}
       >

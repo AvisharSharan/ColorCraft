@@ -17,12 +17,12 @@
 
 .primary-btn {
   background-color: var(--primary);
-  color: var(--text);
+  color: #fff;
 }
 
 .secondary-btn {
   background-color: var(--secondary);
-  color: var(--text);
+  color: #fff;
 }
 
 .primary-btn:hover {
