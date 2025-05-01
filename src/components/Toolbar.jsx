@@ -97,7 +97,7 @@ const Toolbar = ({
         </div>
       </div>
       <div className="palette-note">
-        <p><span className="material-icons">lightbulb</span>Colors are subjective! If the palette is unusual, try using a different color or harmony type.</p>
+        <p><span className="material-icons">tips_and_updates</span>Colors are subjective! If the palette is unusual, try using a different color or harmony type.</p>
       </div>
     </div>
   );
