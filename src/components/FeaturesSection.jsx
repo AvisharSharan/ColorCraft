@@ -2,7 +2,7 @@ import React from "react";
 import chroma from "chroma-js";
 import "../styles/FeaturesSection.css";
 
-const FeaturesSection = ({ onExportClick, onDownloadClick, onHistoryClick, palette, hasHistory }) => {
+const FeaturesSection = ({ onExportClick, onDownloadClick, palette }) => {
   const getContrastColor = (color) => {
     return chroma.contrast(color, '#ffffff') > 2 ? '#ffffff' : palette.text;
   };
@@ -15,7 +15,7 @@ const FeaturesSection = ({ onExportClick, onDownloadClick, onHistoryClick, palet
       </h3>
       
       <div className="features-description">
-        Save your palette as CSS variables, export it as a swatch, or view your generation history.
+        Save your palette as CSS variables or export it as a swatch.
       </div>
       
       <div className="features-buttons">
@@ -41,21 +41,6 @@ const FeaturesSection = ({ onExportClick, onDownloadClick, onHistoryClick, palet
         >
           <span className="material-icons">download</span>
           <span>Download</span>
-        </button>
-        
-        <button 
-          className="feature-btn history-btn"
-          onClick={onHistoryClick}
-          disabled={!hasHistory}
-          style={{
-            background: `linear-gradient(135deg, ${palette.accent}, ${chroma(palette.accent).darken(0.3).hex()})`,
-            color: "#fff",
-            opacity: hasHistory ? 1 : 0.7
-          }}
-          title={!hasHistory ? "Generate palettes to build history" : "View previous palettes"}
-        >
-          <span className="material-icons">history</span>
-          <span>History</span>
         </button>
       </div>
     </div>

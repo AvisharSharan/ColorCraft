@@ -10,7 +10,9 @@ const Toolbar = ({
   useBaseColor, 
   setUseBaseColor,
   harmonyMode,
-  setHarmonyMode
+  setHarmonyMode,
+  onHistoryClick,
+  hasHistory
 }) => {
   return (
     <div className="toolbar">
@@ -63,6 +65,23 @@ const Toolbar = ({
               <option value="tetradic">Tetradic</option>
             </select>
           </div>
+        </div>
+        
+        <div className="toolbar-row buttons-row">
+          <button 
+            className="history-btn"
+            onClick={onHistoryClick}
+            disabled={!hasHistory}
+            style={{
+              background: `linear-gradient(90deg, ${palette.accent}, ${chroma(palette.accent).darken(0.3).hex()})`,
+              color: "#fff",
+              opacity: hasHistory ? 1 : 0.7
+            }}
+            title={!hasHistory ? "Generate palettes to build history" : "View previous palettes"}
+          >
+            <span className="material-icons">history</span>
+            <span>History</span>
+          </button>
           
           <button 
             className="generate-btn"
@@ -72,6 +91,7 @@ const Toolbar = ({
             }}
             onClick={onGenerate}
           >
+            <span className="material-icons">auto_awesome</span>
             Generate
           </button>
         </div>

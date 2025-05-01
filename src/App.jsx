@@ -131,6 +131,8 @@ function App() {
               setUseBaseColor={setUseBaseColor}
               harmonyMode={harmonyMode}
               setHarmonyMode={setHarmonyMode}
+              onHistoryClick={() => setShowHistory(true)}
+              hasHistory={paletteHistory.length > 0}
             />
           </div>
           
@@ -156,8 +158,6 @@ function App() {
               onExportClick={() => setShowExportPopup(true)} 
               onDownloadClick={handleDownload} 
               palette={palette}
-              onHistoryClick={() => setShowHistory(true)}
-              hasHistory={paletteHistory.length > 0}
             />
           </div>
         </div>
