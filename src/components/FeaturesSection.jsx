@@ -14,34 +14,36 @@ const FeaturesSection = ({ onExportClick, onDownloadClick, palette }) => {
         Export Options
       </h3>
       
-      <div className="features-description">
-        Save your palette as CSS variables or export it as a swatch.
-      </div>
-      
-      <div className="features-buttons">
-        <button 
-          className="feature-btn export-btn"
-          onClick={onExportClick}
-          style={{
-            background: `linear-gradient(135deg, ${palette.primary}, ${chroma(palette.primary).darken(0.3).hex()})`,
-            color: "#fff"
-          }}
-        >
-          <span className="material-icons">content_copy</span>
-          <span>Save as CSS</span>
-        </button>
+      <div className="features-content">
+        <p className="features-description">
+          Save your palette as CSS variables or export it as a swatch.
+        </p>
         
-        <button 
-          className="feature-btn download-btn"
-          onClick={onDownloadClick}
-          style={{
-            background: `linear-gradient(135deg, ${palette.secondary}, ${chroma(palette.secondary).darken(0.3).hex()})`,
-            color: "#fff"
-          }}
-        >
-          <span className="material-icons">download</span>
-          <span>Download</span>
-        </button>
+        <div className="features-buttons">
+          <button 
+            className="feature-btn export-btn"
+            onClick={onExportClick}
+            style={{
+              background: `linear-gradient(135deg, ${palette.primary}, ${chroma(palette.primary).darken(0.3).hex()})`,
+              color: "#fff"
+            }}
+          >
+            <span className="material-icons">content_copy</span>
+            <span>Save as CSS</span>
+          </button>
+          
+          <button 
+            className="feature-btn download-btn"
+            onClick={onDownloadClick}
+            style={{
+              background: `linear-gradient(135deg, ${palette.secondary}, ${chroma(palette.secondary).darken(0.3).hex()})`,
+              color: "#fff"
+            }}
+          >
+            <span className="material-icons">download</span>
+            <span>Download</span>
+          </button>
+        </div>
       </div>
     </div>
   );
