@@ -68,6 +68,17 @@ const Toolbar = ({
         </div>
         
         <div className="toolbar-row buttons-row">
+            <button 
+              className="generate-btn"
+              style={{ 
+                background: `linear-gradient(90deg, ${palette.secondary}, ${palette.primary})`, 
+                color: "#fff"
+              }}
+              onClick={onGenerate}
+            >
+              <span className="material-icons">auto_awesome</span>
+              Generate
+            </button>
           <button 
             className="history-btn"
             onClick={onHistoryClick}
@@ -83,17 +94,6 @@ const Toolbar = ({
             <span>History</span>
           </button>
           
-          <button 
-            className="generate-btn"
-            style={{ 
-              background: `linear-gradient(90deg, ${palette.secondary}, ${palette.primary})`, 
-              color: "#fff"
-            }}
-            onClick={onGenerate}
-          >
-            <span className="material-icons">auto_awesome</span>
-            Generate
-          </button>
         </div>
       </div>
     </div>
