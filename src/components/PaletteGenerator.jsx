@@ -2,9 +2,43 @@ import { useState } from "react";
 import chroma from "chroma-js";
 
 const PaletteGenerator = () => {
+  const generateLightBackground = (base) => {
+    const minLightness = 0.85;
+    let bgColor = base.set('hsl.s', base.get('hsl.s') * 0.5);
+    const currentLightness = bgColor.get('hsl.l');
+    if (currentLightness < minLightness) {
+      bgColor = bgColor.set('hsl.l', minLightness);
+    }
+    return bgColor.hex();
+  };
+
+  const ensureVibrancyAndBrightness = (color) => {
+    const minLightness = 0.35;
+    const maxLightness = 0.75;
+    const minSaturation = 0.5;
+    let adjustedColor = color;
+    if (adjustedColor.get('hsl.l') < minLightness) {
+      adjustedColor = adjustedColor.set('hsl.l', minLightness);
+    }
+    if (adjustedColor.get('hsl.l') > maxLightness) {
+      adjustedColor = adjustedColor.set('hsl.l', maxLightness);
+    }
+    if (adjustedColor.get('hsl.s') < minSaturation) {
+      adjustedColor = adjustedColor.set('hsl.s', minSaturation);
+    }
+    return adjustedColor;
+  };
+
   const generatePalette = (harmonyMode, baseColor, useBaseColor) => {
     try {
-      const base = useBaseColor ? chroma(baseColor) : chroma.random();
+      let base;
+      if (useBaseColor) {
+        base = chroma(baseColor);
+      } else {
+        base = chroma.random();
+      }
+      base = ensureVibrancyAndBrightness(base);
+
       let newPalette = {};
 
       switch (harmonyMode) {
@@ -40,7 +74,7 @@ const PaletteGenerator = () => {
       primary: base.hex(),
       secondary: base.set('hsl.h', (base.get('hsl.h') + 30) % 360).hex(),
       accent: base.set('hsl.h', (base.get('hsl.h') + 60) % 360).hex(),
-      background: base.set('hsl.l', Math.min(0.95, base.get('hsl.l') + 0.3)).hex(),
+      background: generateLightBackground(base),
       text: base.set('hsl.l', Math.max(0.15, base.get('hsl.l') - 0.3)).hex()
     };
   };
@@ -50,7 +84,7 @@ const PaletteGenerator = () => {
       primary: base.hex(),
       secondary: base.set('hsl.s', base.get('hsl.s') * 0.7).hex(),
       accent: base.set('hsl.l', base.get('hsl.l') * 0.7).hex(),
-      background: base.set('hsl.l', Math.min(0.95, base.get('hsl.l') + 0.3)).hex(),
+      background: generateLightBackground(base),
       text: base.set('hsl.l', Math.max(0.15, base.get('hsl.l') - 0.3)).hex()
     };
   };
@@ -61,7 +95,7 @@ const PaletteGenerator = () => {
       secondary: base.set('hsl.h', (base.get('hsl.h') + 180) % 360).hex(),
       accent: base.set('hsl.s', base.get('hsl.s') * 0.8)
                  .set('hsl.l', base.get('hsl.l') * 0.8).hex(),
-      background: base.set('hsl.l', Math.min(0.95, base.get('hsl.l') + 0.3)).hex(),
+      background: generateLightBackground(base),
       text: base.set('hsl.l', Math.max(0.15, base.get('hsl.l') - 0.3)).hex()
     };
   };
@@ -71,7 +105,7 @@ const PaletteGenerator = () => {
       primary: base.hex(),
       secondary: base.set('hsl.h', (base.get('hsl.h') + 120) % 360).hex(),
       accent: base.set('hsl.h', (base.get('hsl.h') + 240) % 360).hex(),
-      background: base.set('hsl.l', Math.min(0.95, base.get('hsl.l') + 0.3)).hex(),
+      background: generateLightBackground(base),
       text: base.set('hsl.l', Math.max(0.15, base.get('hsl.l') - 0.3)).hex()
     };
   };
@@ -81,7 +115,7 @@ const PaletteGenerator = () => {
       primary: base.hex(),
       secondary: base.set('hsl.h', (base.get('hsl.h') + 150) % 360).hex(),
       accent: base.set('hsl.h', (base.get('hsl.h') + 210) % 360).hex(),
-      background: base.set('hsl.l', Math.min(0.95, base.get('hsl.l') + 0.3)).hex(),
+      background: generateLightBackground(base),
       text: base.set('hsl.l', Math.max(0.15, base.get('hsl.l') - 0.3)).hex()
     };
   };
@@ -91,7 +125,7 @@ const PaletteGenerator = () => {
       primary: base.hex(),
       secondary: base.set('hsl.h', (base.get('hsl.h') + 90) % 360).hex(),
       accent: base.set('hsl.h', (base.get('hsl.h') + 180) % 360).hex(),
-      background: base.set('hsl.l', Math.min(0.95, base.get('hsl.l') + 0.3)).hex(),
+      background: generateLightBackground(base),
       text: base.set('hsl.h', (base.get('hsl.h') + 270) % 360)
               .set('hsl.l', Math.max(0.15, base.get('hsl.l') - 0.3)).hex()
     };
@@ -99,12 +133,13 @@ const PaletteGenerator = () => {
 
   const generateFallbackPalette = () => {
     const randomBase = chroma.random();
+    const adjustedBase = ensureVibrancyAndBrightness(randomBase);
     return {
-      primary: randomBase.hex(),
-      secondary: randomBase.set('hsl.h', (randomBase.get('hsl.h') + 30) % 360).hex(),
-      accent: randomBase.set('hsl.h', (randomBase.get('hsl.h') + 60) % 360).hex(),
-      background: randomBase.set('hsl.l', Math.min(0.95, randomBase.get('hsl.l') + 0.3)).hex(),
-      text: randomBase.set('hsl.l', Math.max(0.15, randomBase.get('hsl.l') - 0.3)).hex()
+      primary: adjustedBase.hex(),
+      secondary: adjustedBase.set('hsl.h', (adjustedBase.get('hsl.h') + 30) % 360).hex(),
+      accent: adjustedBase.set('hsl.h', (adjustedBase.get('hsl.h') + 60) % 360).hex(),
+      background: generateLightBackground(adjustedBase),
+      text: adjustedBase.set('hsl.l', Math.max(0.15, adjustedBase.get('hsl.l') - 0.3)).hex()
     };
   };
 

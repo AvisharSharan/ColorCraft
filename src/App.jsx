@@ -52,7 +52,8 @@ function App() {
     document.documentElement.style.setProperty("--secondary", palette.secondary);
     document.documentElement.style.setProperty("--accent", palette.accent);
 
-    document.body.style.background = `linear-gradient(45deg, ${palette.primary}, ${palette.secondary})`;
+    // document.body.style.background = `linear-gradient(45deg, ${palette.primary}, ${palette.secondary})`;
+    document.body.style.background = `${palette.background}`;
   }, [palette]);
   const handleGeneratePalette = () => {
     const newPalette = generateColorPalette(harmonyMode, baseColor, useBaseColor);
