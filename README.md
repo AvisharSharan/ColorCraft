@@ -3,6 +3,7 @@
 <div align="center">
   <h3>Color Palette Generator</h3>
   <p>Create harmonious color schemes for your design projects with ease</p>
+  
 
   ![React](https://img.shields.io/badge/React-19.0.0-61DAFB)
   ![Vite](https://img.shields.io/badge/Vite-6.3.1-646CFF)
@@ -10,6 +11,8 @@
 </div>
 
 <br>
+
+### Deployed Link: [ColorCraft](color-craft-chi.vercel.app)
 
 ## ✨ Features
 
@@ -118,16 +121,6 @@ src/
    - Copy CSS variables for direct use in your projects
    - Download a ZIP containing PNG swatch and text files
    - Click individual color cards to copy specific hex codes
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## 👏 Acknowledgments
 
