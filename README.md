@@ -12,7 +12,7 @@
 
 <br>
 
-### Deployed Link: [ColorCraft](color-craft-chi.vercel.app)
+### Deployed Link: [ColorCraft](https://color-craft-chi.vercel.app/)
 
 ## ✨ Features
 
