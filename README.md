@@ -26,6 +26,8 @@
 ## 📸 Screenshots
 
 <div align="center">
+   <img src="./screenshot4.jpeg" alt="Color Palette Generator" width="80%" />
+  <br><br>
   <img src="./screenshot1.jpeg" alt="Color Palette Generator Screenshot" width="80%" />
   <br><br>
   <img src="./screenshot2.jpeg" alt="Color Palette History Screenshot" width="80%" />
