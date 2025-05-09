@@ -37,7 +37,6 @@ const PaletteGenerator = () => {
       } else {
         base = chroma.random();
       }
-      // Use isPrimary=true flag for the base/primary color
       base = ensureVibrancyAndBrightness(base, true);
 
       let newPalette = {};

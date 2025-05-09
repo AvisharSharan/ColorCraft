@@ -53,7 +53,6 @@
   transition: all 0.2s ease;
 }
 
-/* Media queries for responsive design */
 @media (max-width: 768px) {
   .app-header {
     margin: 0;

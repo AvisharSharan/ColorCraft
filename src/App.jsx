@@ -17,11 +17,11 @@ import "./styles/App.css";
 
 function App() {
   const [palette, setPalette] = useState({
-    primary: "#6200ee",    // Deep Purple
-    secondary: "#03dac6",  // Teal
-    accent: "#bb86fc",     // Light Purple
-    background: "#ffffff", // White
-    text: "#121212",       // Dark Gray
+    primary: "#6200ee",
+    secondary: "#03dac6",
+    accent: "#bb86fc",
+    background: "#ffffff",
+    text: "#121212",
   });
 
   const [paletteHistory, setPaletteHistory] = useState([]);
@@ -116,12 +116,11 @@ function App() {
       <div className="main-app">
         <div className="content-grid">
           {/* Top Row */}
-          {/* Section 1: Palette Display - Top Left */}
           <div className="grid-item content-card palette-display-container">
             <PaletteDisplay palette={palette} />
           </div>
           
-          {/* Section 2: Toolbar - Top Right */}
+          {/*Toolbar*/}
           <div className="grid-item toolbar-container">
             <Toolbar 
               onGenerate={handleGeneratePalette}
@@ -138,7 +137,8 @@ function App() {
           </div>
           
           {/* Bottom Row */}
-          {/* Section 3: Preview Cards - Bottom Left */}
+
+          {/*Preview Cards*/}
           <div className="grid-item preview-container">
             {/* Typography Preview */}
             <div className="grid-item preview-card typography-preview-card">
@@ -153,7 +153,7 @@ function App() {
             </div>
           </div>
           
-          {/* Section 4: Features Section - Bottom Right */}
+          {/*Features Section*/}
           <div className="grid-item content-card features-section-container">
             <FeaturesSection 
               onExportClick={() => setShowExportPopup(true)} 

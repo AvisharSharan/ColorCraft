@@ -9,7 +9,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Toolbar title styling to match palette display component */
 .toolbar-title {
   padding: 0 0 0.5rem;
 }
@@ -287,7 +286,6 @@
   font-size: 1.2rem;
 }
 
-/* Responsive adjustments */
 @media (max-width: 576px) {
   .toolbar-row {
     flex-direction: column;
