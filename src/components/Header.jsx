@@ -1,9 +1,7 @@
-import React from "react";
 import "../styles/Header.css";
 import chroma from "chroma-js";
 
 const Header = ({ palette = {} }) => {
-  const textColor = palette.primary && chroma.contrast(palette.primary, '#ffffff') > 2 ? '#ffffff' : '#333333';
   
   return (
     <header className="app-header">

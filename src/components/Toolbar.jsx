@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/Toolbar.css';
 import chroma from 'chroma-js';
 

@@ -1,6 +1,3 @@
-import React from "react";
-import chroma from "chroma-js";
-
 const ButtonPreview = ({ palette }) => (
   <div className="button-preview">
     <button 

@@ -1,5 +1,3 @@
-import React from "react";
-
 const TypographyPreview = ({ palette }) => (
   <div className="typography-preview">
     <h1 style={{ color: palette.text }}>Typography Preview</h1>

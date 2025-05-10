@@ -1,11 +1,7 @@
-import React from "react";
 import chroma from "chroma-js";
 import "../styles/FeaturesSection.css";
 
 const FeaturesSection = ({ onExportClick, onDownloadClick, palette }) => {
-  const getContrastColor = (color) => {
-    return chroma.contrast(color, '#ffffff') > 2 ? '#ffffff' : palette.text;
-  };
 
   return (
     <div className="features-container">

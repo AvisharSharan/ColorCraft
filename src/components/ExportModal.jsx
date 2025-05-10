@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import chroma from "chroma-js";
 import "../styles/ExportModal.css";
 
 const ExportModal = ({ palette, onClose }) => {
-  const [showExportPopup, setShowExportPopup] = useState(true);
+  const [showExportPopup] = useState(true);
   const [copied, setCopied] = useState(false);
   
   const cssText = `:root {\n  --text: ${palette.text};\n  --background: ${palette.background};\n  --primary: ${palette.primary};\n  --secondary: ${palette.secondary};\n  --accent: ${palette.accent};\n}`;

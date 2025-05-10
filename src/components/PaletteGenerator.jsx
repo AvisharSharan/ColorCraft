@@ -1,4 +1,3 @@
-import { useState } from "react";
 import chroma from "chroma-js";
 
 const PaletteGenerator = () => {

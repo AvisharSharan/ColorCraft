@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/PaletteHistory.css";
 
 const PaletteHistory = ({ paletteHistory, onClose, onSelectPalette, onClearHistory }) => {
