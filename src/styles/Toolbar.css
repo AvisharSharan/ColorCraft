@@ -4,7 +4,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--background, #fff);
+  background-color: var(--background);
   border-radius: var(--border-radius-large);
   transition: all 0.3s ease-in-out;
 }
@@ -74,7 +74,7 @@
 .toggle-label,
 .color-picker-container label {
   font-weight: 600;
-  color: var(--text, #333);
+  color: var(--text);
   font-size: 0.95rem;
   transition: opacity 0.2s ease-in-out;
   white-space: nowrap;
@@ -117,7 +117,7 @@
 }
 
 .toggle-switch input:checked + .toggle-slider {
-  background-color: var(--primary, #7c3aed);
+  background-color: var(--primary);
 }
 
 .toggle-switch input:checked + .toggle-slider::before {
@@ -134,7 +134,7 @@
 }
 
 .color-picker-container input[type="color"]:hover {
-  border-color: var(--primary, #7c3aed);
+  border-color: var(--primary);
 }
 
 .color-swatch-input {
@@ -182,7 +182,7 @@
 
 .harmony-selector label {
   font-weight: 600;
-  color: var(--text, #333);
+  color: var(--text);
   font-size: 0.95rem;
 }
 
@@ -192,7 +192,7 @@
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.03);
   font-size: 0.9rem;
-  color: var(--text, #333);
+  color: var(--text);
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 140px;
@@ -207,7 +207,7 @@
 }
 
 .generate-btn {
-  background-color: var(--primary, #7c3aed);
+  background-color: var(--primary);
   color: #fff;
   font-size: 0.95rem;
   font-weight: 600;
@@ -230,7 +230,7 @@
 }
 
 .generate-btn, .history-btn {
-  background-color: var(--primary, #7c3aed);
+  background-color: var(--primary);
   color: #fff;
   font-size: 0.95rem;
   font-weight: 600;
