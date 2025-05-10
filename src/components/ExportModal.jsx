@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/ExportModal.css";
 
 const ExportModal = ({ palette, onClose }) => {

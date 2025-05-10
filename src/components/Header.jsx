@@ -1,5 +1,4 @@
 import "../styles/Header.css";
-import chroma from "chroma-js";
 
 const Header = ({ palette = {} }) => {
   
